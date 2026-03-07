@@ -7,14 +7,191 @@ const showDots = ref(false)
 const revealFaces = ref(false)
 const orbitRef = ref(null)
 
-const faces = [
-  { name: 'Fabio', photo: 'https://algosoc.org/uploads/_card/fabio-votta-1.jpg', dot: '#1565C0' },
-  { name: 'Delaney', photo: 'https://hotpolitics.eu/wp-content/uploads/2025/12/Delaney_Peterson_2025-scaled-center-top-500x500.jpg', dot: '#C5E84C' },
-  { name: 'Roeland', photo: 'https://www.uva.nl/binaries/_ht_1747924741618/content/documents/personalpages/d/u/r.dubel/r.dubel', dot: '#7CB9E8' },
-  { name: 'Chiara', photo: 'https://cdn.bsky.app/img/avatar/plain/did:plc:squv6a7sg6vheny4xnanktgv/bafkreichklk5pv7lb6yll3r7vvtbltld6en52ur3v6huyyct3btyvxnrf4@jpeg', dot: '#B8D8F0' },
-  { name: 'Ernesto', photo: 'https://www.ernesto-deleon.com/authors/admin/avatar_hu614f9917ce8b72d4443466d9e6bcba9e_221201_270x270_fill_q75_lanczos_center.jpg', dot: '#D4F06A' },
-  { name: 'Jin', photo: 'https://media.licdn.com/dms/image/v2/D4E03AQHTIO8T-WxgDQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1696669598795?e=2147483647&v=beta&t=qFivoYs98Ajqy1Sj1oBSFEdkJ6Koq3V169iQaS99mgs', dot: '#3E8EDE' },
+const noonQuotes = [
+  '"Dynamic team player wanted" = we want a young woman. I have the data.',
+  'I read 500,000 job ads so you don\'t have to. Spoiler: they\'re biased.',
+  'Your job ad said "energetic." I know exactly what that means.',
+  'Gender stereotypes in hiring? Let me show you the receipts.',
+  'About to be Dr. Noon. The algorithm didn\'t see that coming.',
+  '"Flexible and adaptable"? That\'s code. I cracked it.',
+  'HR thinks job ads are neutral. My dissertation disagrees.',
+  'Every adjective in your job ad is a political statement.',
+  '"Must be a self-starter" — translation: we won\'t train you.',
+  'I turned job ads into a dataset. It got uncomfortable fast.',
+  '"Culture fit" is doing a lot of heavy lifting in that listing.',
+  'Your recruiter has a type. I quantified it.',
+  'The job ad said "mature." My regression said "ageist."',
+  '"Digital native wanted." That\'s not a skill, that\'s a birth year.',
+  'I read between the lines of job ads. It\'s not pretty.',
+  'Age 55? The algorithm already archived your application.',
+  '"Ambitious go-getter" wanted. Translation: be young and cheap.',
+  'If your job ad were a person, it would fail a bias audit.',
+  'I made recruiters read their own ads back. They were shook.',
+  'The digital society hires like it\'s 1955. I have proof.',
 ]
+
+const faces = [
+  { name: 'Fabio', photo: 'https://algosoc.org/uploads/_card/fabio-votta-1.jpg', dot: '#1565C0', quotes: [
+    'I know who targeted that ad at you.',
+    'Your feed? Not random. Never was.',
+    'Political microtargeting is my cardio.',
+    'The algorithm knows your politics.',
+    'Campaign data doesn\'t lie. Politicians do.',
+    'That sponsored post? I know who paid.',
+    'Facebook knows your vote. I proved it.',
+    'Dark ads aren\'t dark if I can see them.',
+    'Your political identity is a product.',
+    'Targeted by a party? I have the receipt.',
+    'Ad transparency is my love language.',
+    'I scraped 2 million political ads. For fun.',
+    'You clicked that ad. They know everything.',
+    'Microtargeting: it\'s personal. Literally.',
+    'Who paid for that ad? I already know.',
+    'Platforms are the new campaign managers.',
+    'Your swing vote has a price tag. I\'ve seen it.',
+    'I make political ads confess their secrets.',
+    'Data-driven democracy? More like data-driven manipulation.',
+    'I audit ads so democracy has a chance.',
+  ]},
+  { name: 'Delaney', photo: 'https://hotpolitics.eu/wp-content/uploads/2025/12/Delaney_Peterson_2025-scaled-center-top-500x500.jpg', dot: '#C5E84C', quotes: [
+    'Lonely? A populist has entered the chat.',
+    'Your mood predicts your vote. Sorry.',
+    'Hot take: feelings win elections.',
+    'Doom-scrolling is my research method.',
+    'Politics is just therapy with worse outcomes.',
+    'Angry tweets predict election outcomes.',
+    'Populism thrives on loneliness. So does Twitter.',
+    'Your emotions are a political variable.',
+    'Rage-clicking? That\'s a voter behavior.',
+    'I measure vibes. Academically.',
+    'Every doomscroll is a data point.',
+    'Emotional contagion? Also known as TikTok.',
+    'Feelings don\'t care about your facts either.',
+    'Your anxiety has electoral consequences.',
+    'Populists sell belonging. Returns not accepted.',
+    'I regress emotions on vote choice. It works.',
+    'Your political rage? Statistically significant.',
+    'Lonely voters, loud populists. I see the pattern.',
+    'Affective polarization is my comfort zone.',
+    'Your gut feeling is someone\'s campaign strategy.',
+  ]},
+  { name: 'Roeland', photo: 'https://www.uva.nl/binaries/_ht_1747924741618/content/documents/personalpages/d/u/r.dubel/r.dubel', dot: '#7CB9E8', quotes: [
+    'Do you trust this speech bubble?',
+    'Transparency ≠ trust. Plot twist.',
+    '"Fake news" — my whole PhD in two words.',
+    'I study trust. Ironically, trust me.',
+    'Journalists try. Readers say "meh."',
+    'Fact-check this: trust is complicated.',
+    'More transparency, less trust. Weird, right?',
+    'Your news diet is my research question.',
+    'Media literacy: necessary but insufficient.',
+    '"I did my own research" — famous last words.',
+    'The trust paradox is not a band name.',
+    'Credibility is earned. Then immediately lost.',
+    'You trust strangers on Reddit more than the BBC.',
+    'I study why you don\'t believe the news.',
+    'Healthy skepticism has left the chat.',
+    'Your distrust is my dependent variable.',
+    'News avoidance: the new binge-watching.',
+    '"According to sources" — but which ones?',
+    'If trust were easy, I\'d be unemployed.',
+    'I peer-review your news consumption habits.',
+  ]},
+  { name: 'Chiara', photo: 'https://cdn.bsky.app/img/avatar/plain/did:plc:squv6a7sg6vheny4xnanktgv/bafkreichklk5pv7lb6yll3r7vvtbltld6en52ur3v6huyyct3btyvxnrf4@jpeg', dot: '#B8D8F0', quotes: [
+    'Politicians being rude? That\'s my dataset.',
+    'I measure trash-talk for a living.',
+    'Your hot take? I have a codebook for that.',
+    'Incivility is rising. My N is thriving.',
+    'Democracy: now with more insults.',
+    'Parliamentary debate or WWE? Hard to tell.',
+    'I code insults for science.',
+    'Civility is dead. I\'m writing the autopsy.',
+    'Your comment section is my lab.',
+    'Political discourse? More like political roast.',
+    'Trolls are just unpaid research assistants.',
+    'Name-calling in parliament: N = too many.',
+    'I have a PhD in people being mean online.',
+    'Rudeness as rhetoric: surprisingly effective.',
+    'Your outrage is peer-reviewed.',
+    'Deliberative democracy? Have you seen Twitter?',
+    'I measure toxicity. It\'s thriving.',
+    'Every insult is a data point. Lucky me.',
+    'Norm erosion: when "you\'re wrong" becomes "you\'re evil."',
+    'Political manners went extinct. I have the data.',
+  ]},
+  { name: 'Ernesto', photo: 'https://www.ernesto-deleon.com/authors/admin/avatar_hu614f9917ce8b72d4443466d9e6bcba9e_221201_270x270_fill_q75_lanczos_center.jpg', dot: '#D4F06A', quotes: [
+    'Your filter bubble is showing.',
+    'News takes weird detours online.',
+    'Shared reality? In this economy?',
+    'I study info flows. Yours is mostly memes.',
+    'The algorithm curates. I investigate.',
+    'Echo chambers have great acoustics.',
+    'Information doesn\'t want to be free. It wants to go viral.',
+    'Your media diet needs more fiber.',
+    'I mapped your news ecosystem. It\'s a mess.',
+    'The algorithm picks your reality. Daily.',
+    'Cross-cutting exposure is my white whale.',
+    'Your news bubble? Surprisingly cozy.',
+    'Fragmentation: when everyone has their own truth.',
+    'I follow the memes to find the news.',
+    'Selective exposure: academic term for "confirmation bias on steroids."',
+    'Your timeline is a funhouse mirror of reality.',
+    'I track how facts become opinions become memes.',
+    'Information inequality is the new digital divide.',
+    'You and your neighbor see different internets.',
+    'I study what you don\'t see. And you don\'t see a lot.',
+  ]},
+  { name: 'Jin', photo: 'https://media.licdn.com/dms/image/v2/D4E03AQHTIO8T-WxgDQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1696669598795?e=2147483647&v=beta&t=qFivoYs98Ajqy1Sj1oBSFEdkJ6Koq3V169iQaS99mgs', dot: '#3E8EDE', quotes: [
+    'The algorithm decides if you care about politics.',
+    'Your recommender system is gaslighting you.',
+    'Political efficacy? The algorithm ate it.',
+    'Do you feel empowered? Let me check your feed.',
+    'Algorithmic gatekeeping: it\'s not you, it\'s the code.',
+    'Your sense of political power? Algorithmically curated.',
+    'Recommendations shape democracies. No pressure.',
+    'The feed giveth, the feed taketh away.',
+    'You think you chose that video. You didn\'t.',
+    'AI doesn\'t vote. But it decides who does.',
+    'Your "For You" page is a political institution.',
+    'Algorithmic amplification is the new gerrymandering.',
+    'I study invisible editorial decisions.',
+    'The algorithm is the editor-in-chief now.',
+    'Auto-play is a democratic experiment.',
+    'Your engagement is their business model.',
+    'I decode what the algorithm hides from you.',
+    'Political participation? There\'s an algorithm for that.',
+    'The code doesn\'t care about democracy. I do.',
+    'Your next click was already decided for you.',
+  ]},
+]
+
+const hoveredFace = ref(-1)
+const faceQuoteIdx = ref({})
+const noonHovered = ref(false)
+const noonQuoteIdx = ref(0)
+
+function onFaceHover(i) {
+  const quotes = faces[i].quotes
+  let idx = Math.floor(Math.random() * quotes.length)
+  if (faceQuoteIdx.value[i] === idx) idx = (idx + 1) % quotes.length
+  faceQuoteIdx.value[i] = idx
+  hoveredFace.value = i
+}
+
+function onFaceLeave() {
+  hoveredFace.value = -1
+}
+
+function onNoonHover() {
+  let idx = Math.floor(Math.random() * noonQuotes.length)
+  if (noonQuoteIdx.value === idx) idx = (idx + 1) % noonQuotes.length
+  noonQuoteIdx.value = idx
+  noonHovered.value = true
+}
+
+function onNoonLeave() {
+  noonHovered.value = false
+}
 
 let timerId = null
 let revealTimer = null
@@ -276,13 +453,23 @@ function downloadCalendar() {
       </p>
       <div class="hero-author">
         <div class="orbit-system">
-          <div class="author-photo-wrap" :class="{ 'faces-active': revealFaces }">
+          <div
+            class="author-photo-wrap"
+            :class="{ 'faces-active': revealFaces }"
+            @mouseenter="onNoonHover"
+            @mouseleave="onNoonLeave"
+          >
             <img
               src="https://www.noon-abdulqadir.com/authors/admin/avatar_hu_e880ef29dc9f459.jpg"
               alt="Noon M.F. Abdulqadir"
               class="author-photo"
             />
           </div>
+          <transition name="bubble">
+            <div v-if="noonHovered" class="hero-speech-bubble noon-bubble">
+              {{ noonQuotes[noonQuoteIdx] }}
+            </div>
+          </transition>
           <div ref="orbitRef" :class="['orbit-track', { active: showDots, revealed: revealFaces }]">
             <div
               v-for="(face, i) in faces"
@@ -290,8 +477,15 @@ function downloadCalendar() {
               class="face-slot"
               :style="{ background: face.dot }"
               @pointerdown="onFacePointerDown($event, i)"
+              @mouseenter="onFaceHover(i)"
+              @mouseleave="onFaceLeave"
             >
               <img :src="face.photo" :alt="face.name" class="face-img" draggable="false" />
+              <transition name="bubble">
+                <div v-if="hoveredFace === i" class="hero-speech-bubble face-bubble">
+                  {{ face.quotes[faceQuoteIdx[i] ?? 0] }}
+                </div>
+              </transition>
             </div>
           </div>
         </div>
@@ -467,7 +661,7 @@ function downloadCalendar() {
   height: 12px;
   margin: -6px 0 0 -6px;
   border-radius: 50%;
-  overflow: hidden;
+  overflow: visible;
   border: none;
   box-shadow: none;
   opacity: 0;
@@ -517,6 +711,7 @@ function downloadCalendar() {
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 50%;
   opacity: 0;
   transition: opacity 6s ease;
 }
@@ -531,6 +726,75 @@ function downloadCalendar() {
 .orbit-track.revealed .face-slot:nth-child(4) .face-img { transition-delay: 1.4s; }
 .orbit-track.revealed .face-slot:nth-child(5) .face-img { transition-delay: 1.7s; }
 .orbit-track.revealed .face-slot:nth-child(6) .face-img { transition-delay: 2s; }
+
+/* === Speech Bubbles === */
+.hero-speech-bubble {
+  position: absolute;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.4;
+  padding: 0.5rem 0.7rem;
+  border-radius: 10px;
+  width: max-content;
+  max-width: 190px;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 4px 16px rgba(10, 36, 99, 0.25);
+  z-index: 100;
+}
+
+.hero-speech-bubble::after {
+  content: '';
+  position: absolute;
+  border: 5px solid transparent;
+}
+
+.noon-bubble {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: normal;
+}
+
+.noon-bubble::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--navy);
+}
+
+.face-bubble {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.face-bubble::after {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--navy);
+}
+
+.bubble-enter-active {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bubble-leave-active {
+  transition: all 0.15s ease-in;
+}
+
+.bubble-enter-from {
+  opacity: 0;
+  transform: translateX(-50%) translateY(6px) scale(0.92);
+}
+
+.bubble-leave-to {
+  opacity: 0;
+  transform: translateX(-50%) translateY(4px) scale(0.95);
+}
 
 /* === End Orbit System === */
 

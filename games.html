@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hiring Game | Noon M.F. Abdulqadir</title>
+<meta name="description" content="Three interactive experiments from the dissertation Hiring in the Digital Society by Noon M.F. Abdulqadir.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A2463;
+  --blue: #1565C0;
+  --blue-light: #7CB9E8;
+  --lime: #C5E84C;
+  --lime-light: #D4F06A;
+  --white: #FFFFFF;
+  --off-white: #F8FAFB;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-400: #94A3B8;
+  --gray-600: #475569;
+  --gray-800: #1E293B;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--off-white);
+  min-height: 100vh;
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--navy);
+}
+
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.label {
+  font-size: 0.72em;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.header h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8em;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.12;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.header .author {
+  font-size: 0.95em;
+  color: var(--gray-600);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.header .author span {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.header .dissertation-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: 0.92em;
+  color: var(--gray-600);
+  line-height: 1.55;
+  max-width: 520px;
+  margin: 0 auto 16px;
+}
+
+.header .intro {
+  font-size: 0.88em;
+  color: var(--gray-400);
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Divider */
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--lime);
+  border-radius: 2px;
+  margin: 0 auto 48px;
+}
+
+/* Game Cards */
+.games {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 32px 28px;
+  border: 1px solid var(--gray-200);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.game-card:hover {
+  border-color: var(--blue-light);
+  box-shadow: 0 8px 30px rgba(10, 36, 99, 0.07);
+  transform: translateY(-2px);
+}
+
+.game-card .card-chapter {
+  font-size: 0.7em;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.game-card h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.game-card .card-desc {
+  font-size: 0.9em;
+  color: var(--gray-600);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.btn-play {
+  display: inline-block;
+  padding: 12px 36px;
+  border-radius: 50px;
+  border: none;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 0.9em;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  align-self: flex-start;
+}
+
+.btn-play:hover {
+  background: #0C2D7A;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(10, 36, 99, 0.15);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer p {
+  font-size: 0.82em;
+  color: var(--gray-400);
+  line-height: 1.7;
+}
+
+.footer a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .page {
+    padding: 40px 18px 60px;
+  }
+
+  .header h1 {
+    font-size: 2em;
+  }
+
+  .header .dissertation-title {
+    font-size: 0.86em;
+  }
+
+  .game-card {
+    padding: 24px 20px;
+  }
+
+  .game-card h2 {
+    font-size: 1.3em;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="header">
+    <div class="label">PhD Dissertation Defense</div>
+    <h1>The Hiring Game</h1>
+    <p class="author">by <span>Noon M.F. Abdulqadir</span></p>
+    <p class="dissertation-title">Hiring in the Digital Society: Content and Consequences of Gender and Age Stereotypes in Job Advertisements</p>
+    <p class="intro">Three interactive experiments drawn from original research on gender bias in job advertising, algorithmic ad delivery, and AI-assisted hiring across Europe.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="games">
+
+    <div class="game-card">
+      <div class="card-chapter">Chapter 2</div>
+      <h2>Frame Spotter</h2>
+      <p class="card-desc">Job ads use warmth and competence framing in ways that systematically differ across male- and female-dominated sectors. Read real-style postings and spot the framing patterns the research uncovered.</p>
+      <a href="game-ch2.html" class="btn-play">Play</a>
+    </div>
+
+    <div class="game-card">
+      <div class="card-chapter">Chapter 3</div>
+      <h2>Who Sees This Ad?</h2>
+      <p class="card-desc">Social media platforms decide who sees which job ads. Explore how algorithmic delivery reproduces gender stereotypes, and how the effect varies with national gender egalitarianism levels across Europe.</p>
+      <a href="game-ch3.html" class="btn-play">Play</a>
+    </div>
+
+    <div class="game-card">
+      <div class="card-chapter">Chapter 4</div>
+      <h2>Fair Hire?</h2>
+      <p class="card-desc">An AI system reviews two candidates and picks a favorite. Can you tell when the recommendation reflects qualifications, and when it reflects gender stereotypes? Based on experimental findings about the anchoring effect of AI recommendations on recruiter decisions.</p>
+      <a href="game-ch4.html" class="btn-play">Play</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <p>Based on original research by Noon M.F. Abdulqadir, combining content analysis, computational methods, and experimental designs to study how stereotypes operate in modern hiring systems.<br>
+    <a href="https://defense.noon-abdulqadir.com">noon-abdulqadir.com</a></p>
+  </div>
+
+</div>
+
+</body>
+</html>

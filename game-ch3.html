@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Who Sees This Ad? - Chapter 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:#FFFFFF;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#1a1a2e;
+  padding-top:48px;
+}
+
+.game-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid #E2E8F0;
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-home {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: #0A2463;
+  text-decoration: none;
+}
+
+.nav-home:hover { color: #1565C0; }
+
+.nav-links { display: flex; gap: 4px; }
+
+.nav-link {
+  font-size: 0.72em;
+  color: #94A3B8;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.nav-link:hover { color: #0A2463; background: #F1F5F9; }
+.nav-link.active { color: #1565C0; background: rgba(21, 101, 192, 0.08); }
+
+.container{
+  max-width:620px;
+  width:100%;
+  padding:32px 24px;
+  text-align:center;
+}
+
+.screen{display:none;animation:fadeIn .4s ease}
+.screen.active{display:block}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:2.4em;
+  font-weight:800;
+  color:#0A2463;
+  margin-bottom:6px;
+  letter-spacing:-.5px;
+  line-height:1.15;
+}
+
+h2{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.4em;
+  font-weight:700;
+  color:#0A2463;
+  margin-bottom:8px;
+}
+
+.subtitle{
+  color:#5a6578;
+  font-size:.95em;
+  margin-bottom:28px;
+  line-height:1.6;
+}
+
+.chapter-label{
+  font-size:.72em;
+  color:#1565C0;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  margin-bottom:10px;
+  font-weight:600;
+}
+
+.card{
+  background:#F8FAFB;
+  border-radius:12px;
+  padding:28px;
+  border:1px solid #E2E8F0;
+  margin:18px 0;
+}
+
+.btn{
+  display:inline-block;
+  padding:12px 32px;
+  border-radius:50px;
+  border:none;
+  font-size:.95em;
+  font-family:'Inter',system-ui,sans-serif;
+  cursor:pointer;
+  transition:all .2s ease;
+  margin:5px;
+  font-weight:600;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 4px 14px rgba(10,36,99,.12);
+}
+
+.btn:disabled{
+  opacity:.4;
+  cursor:default;
+  transform:none;
+  box-shadow:none;
+}
+
+.btn-primary{
+  background:#0A2463;
+  color:#fff;
+  padding:14px 40px;
+  font-size:1em;
+  font-weight:700;
+}
+
+.btn-primary:hover{
+  background:#0d2d7a;
+}
+
+.btn-start-over{
+  background:#F8FAFB;
+  color:#0A2463;
+  border:1px solid #E2E8F0;
+  padding:14px 40px;
+  font-size:.95em;
+  font-weight:600;
+}
+
+.btn-start-over:hover{
+  background:#eef2f7;
+}
+
+.btn-women{
+  background:#fff;
+  color:#8a3050;
+  border:2px solid #E8A0B0;
+  padding:11px 24px;
+}
+.btn-women:hover:not(:disabled){
+  background:#fdf5f7;
+  border-color:#d4869a;
+}
+
+.btn-men{
+  background:#fff;
+  color:#1a4a78;
+  border:2px solid #7CB9E8;
+  padding:11px 24px;
+}
+.btn-men:hover:not(:disabled){
+  background:#f3f8fd;
+  border-color:#5aa0d8;
+}
+
+.btn-equal{
+  background:#fff;
+  color:#4a5568;
+  border:2px solid #CBD5E0;
+  padding:11px 24px;
+}
+.btn-equal:hover:not(:disabled){
+  background:#f7f9fb;
+  border-color:#a0aec0;
+}
+
+.ad-card {
+  background: #F8FAFB;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 0;
+  margin: 16px 0;
+  text-align: left;
+  overflow: hidden;
+}
+
+.ad-accent {
+  height: 4px;
+  width: 100%;
+  background: #1565C0;
+}
+
+.ad-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px 0;
+}
+
+.ad-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #E2E8F0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+  flex-shrink: 0;
+  font-weight: 700;
+  color: #0A2463;
+}
+
+.ad-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:1.15em;
+  font-weight:700;
+  color:#0A2463;
+  margin-bottom:2px;
+}
+
+.ad-company {
+  font-size: 0.82em;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.ad-body{
+  font-size:.9em;
+  color:#4a5568;
+  line-height:1.7;
+  padding: 12px 24px;
+}
+
+.ad-meta {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 16px;
+  flex-wrap: wrap;
+}
+
+.ad-tag {
+  font-size: 0.72em;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: #E2E8F0;
+  color: #475569;
+  font-weight: 500;
+}
+
+.result-bar {
+  display: flex;
+  height: 44px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 16px 0;
+  font-size: 0.82em;
+  font-weight: 600;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.result-women {
+  background: linear-gradient(135deg, #E8A0B0, #D4869A);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.8s ease;
+  gap: 6px;
+}
+
+.result-men {
+  background: linear-gradient(135deg, #7CB9E8, #5AA0D8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.8s ease;
+  gap: 6px;
+}
+
+.feedback{
+  min-height:40px;
+  padding:10px 0;
+  font-size:.9em;
+  line-height:1.5;
+}
+
+.progress-dots{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin:20px 0;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#E2E8F0;
+  transition:all .3s ease;
+}
+
+.dot.done{background:#0A2463}
+.dot.current{background:#1565C0;transform:scale(1.5)}
+
+.country-flag {
+  font-size: 3em;
+  margin-bottom: 8px;
+}
+
+.country-name-display{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:2em;
+  font-weight:700;
+  color:#0A2463;
+  margin-bottom:4px;
+}
+
+.finding-card{
+  background:#F8FAFB;
+  border-radius:12px;
+  padding:24px;
+  margin:16px 0;
+  border-left:3px solid #0A2463;
+  text-align:left;
+  line-height:1.7;
+  font-size:.93em;
+  color:#2d3748;
+}
+
+.finding-card strong{color:#0A2463}
+
+.highlight-word{
+  background:#C5E84C;
+  color:#0A2463;
+  padding:1px 5px;
+  border-radius:4px;
+  font-weight:600;
+  font-size:.88em;
+}
+
+.country-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px 0;
+  border-bottom:1px solid #E2E8F0;
+  text-align:left;
+}
+
+.country-row:last-child{border:none}
+
+.mini-bar{
+  display:flex;
+  height:14px;
+  border-radius:50px;
+  overflow:hidden;
+  width:110px;
+}
+
+.meta{
+  font-size:.8em;
+  color:#718096;
+  margin-bottom:4px;
+  font-weight:500;
+}
+
+.egal-badge{
+  display:inline-block;
+  background:#B8D8F0;
+  color:#0A2463;
+  font-size:.72em;
+  font-weight:600;
+  padding:3px 10px;
+  border-radius:50px;
+  letter-spacing:.02em;
+  margin-top:6px;
+}
+
+@media(max-width:600px){
+  body { display: block; }
+  h1{font-size:1.8em}
+  .container{padding:20px 16px}
+  .ad-body{font-size:.88em}
+  .btn{padding:14px 20px;font-size:.93em;margin:4px;min-height:48px}
+  .btn-primary{padding:14px 32px}
+  .game-nav { padding: 6px 16px; }
+  .card{padding:20px 16px}
+  .bar-container{gap:3px}
+}
+</style>
+</head>
+<body>
+
+<nav class="game-nav">
+  <a href="games.html" class="nav-home">The Hiring Game</a>
+  <div class="nav-links">
+    <a href="game-ch2.html" class="nav-link">Ch 2</a>
+    <a href="game-ch3.html" class="nav-link active">Ch 3</a>
+    <a href="game-ch4.html" class="nav-link">Ch 4</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="screen active" id="titleScreen">
+  <div class="chapter-label">Chapter 3</div>
+  <h1>Who Sees This Ad?</h1>
+  <p class="subtitle">When companies post job ads on social media, the platform's algorithm decides which users see them. That delivery process is not always fair.</p>
+  <div class="card" style="text-align:left;line-height:1.7;font-size:.93em">
+    <p>You will see <strong>real-style job ads</strong> as they might appear on a social media platform in different European countries.</p>
+    <p style="margin-top:10px">For each ad, guess <strong>which demographic group</strong> the algorithm delivered it to more heavily: mostly women, mostly men, or roughly equal.</p>
+    <p style="margin-top:10px;color:#718096">We will visit five countries. You might be surprised how much geography and culture shape algorithmic outcomes.</p>
+  </div>
+  <button class="btn btn-primary" onclick="startGame()">Begin</button>
+</div>
+
+<div class="screen" id="countryIntro">
+  <div class="progress-dots" id="countryDots"></div>
+  <div class="country-flag" id="cFlag"></div>
+  <div class="country-name-display" id="cName"></div>
+  <div class="egal-badge" id="cEgal"></div>
+  <p class="subtitle" style="margin-top:16px" id="cDesc"></p>
+  <button class="btn btn-primary" onclick="startCountry()">See the ads</button>
+</div>
+
+<div class="screen" id="adScreen">
+  <div class="progress-dots" id="adDots"></div>
+  <p class="meta" id="adCount"></p>
+  <div class="ad-card">
+    <div class="ad-accent"></div>
+    <div class="ad-header">
+      <div class="ad-logo" id="adLogo"></div>
+      <div>
+        <div class="ad-title" id="adTitle"></div>
+        <div class="ad-company" id="adCompany"></div>
+      </div>
+    </div>
+    <div class="ad-body" id="adBody"></div>
+    <div class="ad-meta" id="adMeta"></div>
+  </div>
+  <p style="font-size:.92em;margin-bottom:10px;color:#0A2463;font-weight:600">Who saw this ad more?</p>
+  <div>
+    <button class="btn btn-women" id="btnW" onclick="guess('women')">Mostly women</button>
+    <button class="btn btn-men" id="btnM" onclick="guess('men')">Mostly men</button>
+    <button class="btn btn-equal" id="btnE" onclick="guess('equal')">Roughly equal</button>
+  </div>
+  <div class="feedback" id="adFeedback"></div>
+</div>
+
+<div class="screen" id="revealScreen">
+  <div class="progress-dots" id="revealDots"></div>
+  <h2 id="revealTitle"></h2>
+  <div class="result-bar">
+    <div class="result-women" id="rWomen"></div>
+    <div class="result-men" id="rMen"></div>
+  </div>
+  <div class="finding-card" id="revealText"></div>
+  <button class="btn btn-primary" id="revealBtn" onclick="nextAd()">Next</button>
+</div>
+
+<div class="screen" id="countryFinding">
+  <div class="progress-dots" id="cfDots"></div>
+  <div class="country-name-display" id="cfName"></div>
+  <div class="egal-badge" id="cfEgal"></div>
+  <div class="finding-card" style="margin-top:20px" id="cfText"></div>
+  <button class="btn btn-primary" id="cfBtn" onclick="nextCountry()">Next country</button>
+</div>
+
+<div class="screen" id="summaryScreen">
+  <div class="chapter-label">Summary</div>
+  <h2>Ad delivery bias across Europe</h2>
+  <p class="subtitle">Average delivery split by country, across all ads tested</p>
+  <div class="card">
+    <div id="summaryList"></div>
+  </div>
+  <div class="finding-card">
+    <strong>Key finding:</strong> Ad delivery algorithms systematically reproduce gender stereotypes, routing ads with caring and supportive language to women and ads with assertive and technical language to men. However, this effect is moderated by national context. <strong>More egalitarian countries show less biased delivery.</strong> The platform does not simply reflect individual preferences. It reflects, and amplifies, cultural norms.
+  </div>
+  <p style="font-size:.88em;color:#718096;margin-top:16px" id="finalScore"></p>
+  <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <a href="game-ch4.html" class="btn btn-primary" style="text-decoration:none">Next: Fair Hire?</a>
+    <a href="games.html" class="btn btn-start-over" style="text-decoration:none">All games</a>
+    <button class="btn btn-start-over" onclick="location.reload()">Start over</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const COUNTRIES=[
+  {
+    name:'Sweden',
+    flag:'\u{1F1F8}\u{1F1EA}',
+    egal:'High egalitarianism',
+    desc:'One of Europe\'s most gender-equal societies. Does that equality extend to how algorithms distribute job ads?',
+    ads:[
+      {
+        title:'Registered Nurse, Pediatric Ward',
+        company:'Karolinska University Hospital',
+        location:'Stockholm',
+        type:'Full-time',
+        posted:'2d ago',
+        body:'We are seeking a Registered Nurse for our pediatric care team. Strong clinical assessment skills and evidence-based decision-making are required, but above all we value a supportive colleague with compassion, genuine warmth, and empathy for young patients and their families.',
+        answer:'women',
+        wPct:58,
+        mPct:42,
+        explain:'Even in egalitarian Sweden, this ad skewed toward women. While it includes competence language like "clinical assessment" and "evidence-based decisions," the algorithm keyed on warmth signals: <span class="highlight-word">supportive</span>, <span class="highlight-word">compassion</span>, <span class="highlight-word">warmth</span>, and <span class="highlight-word">empathy</span>. Those words tipped delivery toward female users, though the gap is notably smaller than in most other countries.'
+      },
+      {
+        title:'Backend Software Developer',
+        company:'Klarna Engineering',
+        location:'Stockholm',
+        type:'Full-time \u00B7 Remote',
+        posted:'3d ago',
+        body:'We are looking for a backend developer to independently scale complex distributed systems with a rigorous, methodical, analytical approach to problem-solving. The role also involves collaboration with product managers in a culture of mutual respect and open communication.',
+        answer:'men',
+        wPct:38,
+        mPct:62,
+        explain:'Despite mentions of "collaboration," "mutual respect," and "user experience," the algorithm weighted this ad toward men. The dominant signals were competence-coded terms: <span class="highlight-word">independently</span>, <span class="highlight-word">complex</span>, <span class="highlight-word">analytical</span>, <span class="highlight-word">methodical</span>, and <span class="highlight-word">problem-solving</span>. In Sweden, the skew is moderate compared to less egalitarian countries.'
+      },
+      {
+        title:'Project Coordinator, Urban Development',
+        company:'Stockholm Stadsbyggnad',
+        location:'Stockholm',
+        type:'Full-time',
+        posted:'1d ago',
+        body:'We are hiring a Project Coordinator to manage timelines and deliverables across urban development initiatives. Strong organizational skills and planning precision are required, balanced with a collaborative, people-first approach and a supportive team culture.',
+        answer:'equal',
+        wPct:52,
+        mPct:48,
+        explain:'This ad landed nearly equal. It balances competence language ("organizational skills," "planning precision," "deliverables") with warmth language (<span class="highlight-word">collaborative</span>, <span class="highlight-word">people-first</span>, <span class="highlight-word">supportive</span>). When neither signal dominates, the algorithm distributes more evenly. The framing, not the role itself, is what triggers biased delivery.'
+      }
+    ],
+    finding:'In Sweden, algorithmic bias in ad delivery is <strong>present but modest</strong>. Warmth-framed ads still skew female and competence-framed ads still skew male, but the gaps are smaller here than in most of Europe. The cultural context of gender equality appears to partially offset the platform\'s stereotypical routing patterns.'
+  },
+  {
+    name:'Netherlands',
+    flag:'\u{1F1F3}\u{1F1F1}',
+    egal:'High egalitarianism',
+    desc:'Another highly egalitarian society. The Netherlands shares many progressive values with Sweden, but does the algorithm behave the same way?',
+    ads:[
+      {
+        title:'Lead Teacher, Early Childhood Education',
+        company:'Kinderland Pedagogisch',
+        location:'Amsterdam',
+        type:'Full-time',
+        posted:'2d ago',
+        body:'Our preschool needs a Lead Teacher who is both pedagogically rigorous and naturally warm with young children. You will design curricula balancing structured skill-building with creative, nurturing play. Patience and the ability to support each child\'s development are essential.',
+        answer:'women',
+        wPct:62,
+        mPct:38,
+        explain:'Despite requiring a degree and emphasizing "pedagogically rigorous" and "structured skill-building," the algorithm routed this ad predominantly to women. The warmth signals were stronger: <span class="highlight-word">nurturing</span>, <span class="highlight-word">warm</span>, <span class="highlight-word">patience</span>, and <span class="highlight-word">support</span>. Even in the egalitarian Netherlands, the algorithm responds to word choice more than job content.'
+      },
+      {
+        title:'Senior Financial Analyst',
+        company:'ING Group',
+        location:'Amsterdam',
+        type:'Full-time',
+        posted:'4d ago',
+        body:'We are seeking an ambitious, results-driven Senior Financial Analyst to build complex financial models and deliver data-driven, strategic recommendations. You must thrive under pressure. We offer a collaborative team environment with mentoring for career development.',
+        answer:'men',
+        wPct:35,
+        mPct:65,
+        explain:'Although the ad mentions "collaborative team" and "mentoring," the algorithm weighted it heavily toward men. The dominant signals were competence terms: <span class="highlight-word">ambitious</span>, <span class="highlight-word">results-driven</span>, <span class="highlight-word">complex</span>, <span class="highlight-word">strategic</span>, and <span class="highlight-word">data-driven</span>. These words code strongly as agentic language, which the algorithm associates with male user engagement patterns.'
+      },
+      {
+        title:'Marketing Communications Manager',
+        company:'CreativePulse Agency',
+        location:'Rotterdam',
+        type:'Full-time',
+        posted:'1d ago',
+        body:'We need a Marketing Communications Manager to lead strategic campaigns and build meaningful client relationships. The role combines sharp analytical thinking with an authentic, people-centered, collaborative approach to brand storytelling.',
+        answer:'equal',
+        wPct:48,
+        mPct:52,
+        explain:'This ad produced nearly equal delivery because it mixes both signal types in balance. Competence terms like "strategic," "analytical thinking," and "performance metrics" sit alongside warmth terms like <span class="highlight-word">meaningful</span>, <span class="highlight-word">people-centered</span>, and <span class="highlight-word">collaborative</span>. When the language balance is even, the algorithm does not skew delivery strongly in either direction.'
+      }
+    ],
+    finding:'The Netherlands shows a <strong>similar moderate pattern</strong> to Sweden. Egalitarian norms in the user base seem to reduce, but not eliminate, the algorithm\'s gendered delivery. The bias exists, but its magnitude is dampened by the cultural environment.'
+  },
+  {
+    name:'Germany',
+    flag:'\u{1F1E9}\u{1F1EA}',
+    egal:'Moderate egalitarianism',
+    desc:'Germany occupies the middle ground in European gender egalitarianism. How does that moderate position translate into ad delivery patterns?',
+    ads:[
+      {
+        title:'Senior Care Specialist, Assisted Living',
+        company:'Caritas Altenpflege',
+        location:'Munich',
+        type:'Full-time',
+        posted:'3d ago',
+        body:'We are hiring a compassionate Senior Care Specialist who is warm, patient, and genuinely dedicated to helping elderly residents. You will coordinate care plans and build trusting relationships with residents and families in a caring team environment.',
+        answer:'women',
+        wPct:66,
+        mPct:34,
+        explain:'This ad generated a pronounced skew toward women in Germany. While it mentions "coordinate with medical staff" and "implement care plans," the algorithm overwhelmingly weighted the warmth-dense language: <span class="highlight-word">compassionate</span>, <span class="highlight-word">warm</span>, <span class="highlight-word">patient</span>, <span class="highlight-word">dedicated</span>, <span class="highlight-word">trusting</span>, and <span class="highlight-word">caring</span>. In a moderate-egalitarianism context, these signals produce nearly a 2:1 delivery ratio favoring women.'
+      },
+      {
+        title:'Mechanical Design Engineer',
+        company:'Bosch Engineering',
+        location:'Stuttgart',
+        type:'Full-time',
+        posted:'2d ago',
+        body:'We are looking for a Mechanical Design Engineer to design, test, and optimize precision components. The role requires strong technical expertise, decisive problem-solving, and independent project ownership. We encourage knowledge-sharing across teams.',
+        answer:'men',
+        wPct:28,
+        mPct:72,
+        explain:'Despite mentioning "knowledge-sharing" and clear communication, this ad was delivered overwhelmingly to men. The competence signals dominated: <span class="highlight-word">technical expertise</span>, <span class="highlight-word">precision</span>, <span class="highlight-word">decisive</span>, <span class="highlight-word">independent</span>, and <span class="highlight-word">optimize</span>. In Germany\'s moderate-egalitarianism context, the skew is significantly larger than what we saw in Sweden or the Netherlands for similar competence-heavy ads.'
+      },
+      {
+        title:'Human Resources Coordinator',
+        company:'PeopleFirst GmbH',
+        location:'Berlin',
+        type:'Full-time',
+        posted:'5d ago',
+        body:'We are seeking a friendly, approachable HR Coordinator with empathetic listening skills and genuine care for employee wellbeing. You will also manage HR data systems, track compliance metrics, and produce workforce analytics reports with organizational efficiency.',
+        answer:'women',
+        wPct:60,
+        mPct:40,
+        explain:'Even though this ad includes competence language like "compliance metrics," "workforce analytics," and "organizational efficiency," the warm framing tipped delivery toward women. The algorithm keyed on <span class="highlight-word">empathetic</span>, <span class="highlight-word">care</span>, <span class="highlight-word">friendly</span>, <span class="highlight-word">approachable</span>, and <span class="highlight-word">concern</span>. This shows the algorithm is sensitive to even a slight warmth lean. A few warm words can override a substantial amount of neutral or competence language.'
+      }
+    ],
+    finding:'In Germany, the bias is <strong>more pronounced</strong>. Warmth-framed ads skew heavily female and competence-framed ads skew heavily male. The moderate egalitarian context provides less of a cultural buffer than what we observed in Sweden and the Netherlands.'
+  },
+  {
+    name:'Italy',
+    flag:'\u{1F1EE}\u{1F1F9}',
+    egal:'Lower egalitarianism',
+    desc:'Italy scores lower on European gender egalitarianism indices. This cultural context appears to interact with algorithmic delivery in significant ways.',
+    ads:[
+      {
+        title:'Nursery Care Assistant',
+        company:'Asilo Nido Girasole',
+        location:'Milan',
+        type:'Part-time',
+        posted:'1d ago',
+        body:'A gentle, patient carer is needed for our private nursery. You will create a loving, supportive environment and must be naturally kind and nurturing. First-aid certification and observational skills required. We offer a warm, tight-knit team culture.',
+        answer:'women',
+        wPct:72,
+        mPct:28,
+        explain:'In Italy, this ad reached nearly three times as many women as men. The warmth saturation is high: <span class="highlight-word">gentle</span>, <span class="highlight-word">patient</span>, <span class="highlight-word">loving</span>, <span class="highlight-word">supportive</span>, <span class="highlight-word">kind</span>, <span class="highlight-word">nurturing</span>, and <span class="highlight-word">warm</span>. Despite also requiring first-aid certification and observational skills, the algorithm strongly weighted the caregiving language. Algorithmic bias is most extreme in less egalitarian cultural contexts.'
+      },
+      {
+        title:'Construction Project Director',
+        company:'Costruzioni Italiane SpA',
+        location:'Rome',
+        type:'Full-time',
+        posted:'4d ago',
+        body:'We need a Construction Project Director with assertive decision-making, strong leadership under pressure, and full accountability for project outcomes. You will drive your team to meet aggressive timelines and manage large budgets. Clear client communication is also valued.',
+        answer:'men',
+        wPct:22,
+        mPct:78,
+        explain:'This ad shows one of the most extreme skews in the dataset. The competence and agency signals are dense: <span class="highlight-word">assertive</span>, <span class="highlight-word">strong leadership</span>, <span class="highlight-word">accountability</span>, <span class="highlight-word">driving</span>, <span class="highlight-word">aggressive</span>. Even the mention of "communication with clients" was not enough to offset these agentic terms. In Italy\'s less egalitarian context, the algorithm amplifies these associations more than in any other country tested.'
+      },
+      {
+        title:'Regional Sales Representative',
+        company:'Vendita Nord Srl',
+        location:'Turin',
+        type:'Full-time',
+        posted:'2d ago',
+        body:'We are looking for a personable, trustworthy Sales Representative who is genuinely invested in understanding each client\'s needs. You will meet revenue targets and analyze market trends. A friendly, approachable demeanor and solid negotiation skills are essential.',
+        answer:'women',
+        wPct:64,
+        mPct:36,
+        explain:'Sales is not traditionally coded as a "female" role, but the ad\'s warm framing made the algorithm treat it as one. The key triggers were <span class="highlight-word">personable</span>, <span class="highlight-word">trustworthy</span>, <span class="highlight-word">genuinely invested</span>, <span class="highlight-word">friendly</span>, and <span class="highlight-word">approachable</span>. These outweighed the competence terms "revenue targets," "analyzing," and "negotiation." This demonstrates that language shapes algorithmic delivery more than the actual occupation.'
+      }
+    ],
+    finding:'Italy shows the <strong>strongest bias</strong> in the dataset. In a less egalitarian cultural context, the algorithm amplifies gender stereotypes significantly. The gap between warmth-framed and competence-framed ad delivery is wider here than in any other country tested.'
+  },
+  {
+    name:'All of Europe',
+    flag:'\u{1F1EA}\u{1F1FA}',
+    egal:'Varies by country',
+    desc:'Looking at the continental picture, what patterns emerge when we aggregate ad delivery data across all countries?',
+    ads:[
+      {
+        title:'Community Social Worker',
+        company:'EU Social Services Network',
+        location:'Brussels',
+        type:'Full-time',
+        posted:'3d ago',
+        body:'Join our social services team and make a meaningful difference. We need someone with deep empathy, a genuine commitment to social justice, and a compassionate, community-focused mindset. Strong analytical skills for needs assessment and case documentation are also required.',
+        answer:'women',
+        wPct:65,
+        mPct:35,
+        explain:'Across Europe, this social work ad consistently reached more women. Despite requiring "analytical skills" and emphasizing professional qualifications, the algorithm was drawn to the warmth signals: <span class="highlight-word">empathy</span>, <span class="highlight-word">compassionate</span>, <span class="highlight-word">community-focused</span>, <span class="highlight-word">meaningful</span>, and <span class="highlight-word">genuine commitment</span>. This pattern held in every country studied, though the magnitude varied with national egalitarianism levels.'
+      },
+      {
+        title:'Senior Data Scientist',
+        company:'DataEurope Analytics',
+        location:'Dublin',
+        type:'Full-time \u00B7 Remote',
+        posted:'1d ago',
+        body:'We are hiring a Senior Data Scientist with a sharp, analytical mind to transform complex datasets into strategic business insights using innovative, methodical problem-solving. We pride ourselves on a respectful, inclusive team culture that values creative input.',
+        answer:'men',
+        wPct:30,
+        mPct:70,
+        explain:'Despite noting an "inclusive team culture" and valuing "creative input," this ad was delivered predominantly to men across all countries. The competence signals were dominant: <span class="highlight-word">complex</span>, <span class="highlight-word">sharp</span>, <span class="highlight-word">analytical</span>, <span class="highlight-word">innovative</span>, <span class="highlight-word">methodical</span>, and <span class="highlight-word">strategic</span>. Competence-heavy technical ads consistently reach more men. This pattern holds regardless of country.'
+      },
+      {
+        title:'Office Operations Administrator',
+        company:'OfficeHub International',
+        location:'Vienna',
+        type:'Full-time',
+        posted:'2d ago',
+        body:'We need an Office Operations Administrator with strong organizational skills to manage schedules, vendor contracts, and facility logistics. We also need someone helpful and approachable who makes the office a welcoming, friendly place. We offer a close-knit team.',
+        answer:'women',
+        wPct:59,
+        mPct:41,
+        explain:'Office administration is a mixed-gender field, but the warm framing tipped delivery toward women. The algorithm responded to <span class="highlight-word">helpful</span>, <span class="highlight-word">approachable</span>, <span class="highlight-word">welcoming</span>, <span class="highlight-word">friendly</span>, and <span class="highlight-word">close-knit</span>. The competence language ("organizational skills," "attention to detail," "managing") was present but not dominant enough to offset the warmth signals. The algorithm does not evaluate the job itself. It evaluates the language used to describe it.'
+      }
+    ],
+    finding:'The continental pattern is clear: <strong>ad delivery algorithms reproduce gender stereotypes at scale</strong>. But the strength of this effect depends on cultural context. Egalitarian societies experience less biased delivery, while less egalitarian societies see amplified bias. This suggests the algorithm partly mirrors the cultural environment of its users, then reinforces those patterns through its optimization process.'
+  }
+];
+
+let currentCountry=0,currentAd=0,correctGuesses=0,totalGuesses=0;
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function makeDots(containerId){
+  const c=document.getElementById(containerId);
+  c.innerHTML='';
+  COUNTRIES.forEach((_,i)=>{
+    const d=document.createElement('div');
+    d.className='dot'+(i<currentCountry?' done':'')+(i===currentCountry?' current':'');
+    c.appendChild(d);
+  });
+}
+
+function startGame(){
+  currentCountry=0;
+  correctGuesses=0;
+  totalGuesses=0;
+  showCountryIntro();
+}
+
+function showCountryIntro(){
+  const c=COUNTRIES[currentCountry];
+  makeDots('countryDots');
+  document.getElementById('cFlag').textContent=c.flag;
+  document.getElementById('cName').textContent=c.name;
+  document.getElementById('cEgal').textContent=c.egal;
+  document.getElementById('cDesc').textContent=c.desc;
+  show('countryIntro');
+}
+
+function startCountry(){
+  currentAd=0;
+  showAd();
+}
+
+function showAd(){
+  const c=COUNTRIES[currentCountry];
+  const ad=c.ads[currentAd];
+  makeDots('adDots');
+  document.getElementById('adCount').textContent=c.flag+' '+c.name+' \u00B7 Ad '+(currentAd+1)+'/'+c.ads.length;
+  document.getElementById('adTitle').textContent=ad.title;
+  document.getElementById('adCompany').textContent=ad.company;
+  document.getElementById('adLogo').textContent=ad.company.charAt(0);
+  document.getElementById('adBody').textContent=ad.body;
+  var metaEl=document.getElementById('adMeta');
+  metaEl.innerHTML='';
+  var tags=[ad.location,ad.type,ad.posted];
+  tags.forEach(function(t){
+    var span=document.createElement('span');
+    span.className='ad-tag';
+    span.textContent=t;
+    metaEl.appendChild(span);
+  });
+  document.getElementById('adFeedback').textContent='';
+  document.getElementById('btnW').disabled=false;
+  document.getElementById('btnM').disabled=false;
+  document.getElementById('btnE').disabled=false;
+  show('adScreen');
+}
+
+function guess(g){
+  const ad=COUNTRIES[currentCountry].ads[currentAd];
+  totalGuesses++;
+  document.getElementById('btnW').disabled=true;
+  document.getElementById('btnM').disabled=true;
+  document.getElementById('btnE').disabled=true;
+  const correct=g===ad.answer;
+  if(correct) correctGuesses++;
+  const fb=document.getElementById('adFeedback');
+  fb.innerHTML=correct
+    ?'<span style="color:#2a7a3a;font-weight:600">Correct.</span>'
+    :'<span style="color:#9a6a20;font-weight:600">Not quite. Let\'s see the data.</span>';
+  setTimeout(()=>showReveal(ad),1000);
+}
+
+function showReveal(ad){
+  makeDots('revealDots');
+  document.getElementById('revealTitle').textContent=ad.title;
+  const wBar=document.getElementById('rWomen');
+  const mBar=document.getElementById('rMen');
+  wBar.style.width='50%';
+  mBar.style.width='50%';
+  wBar.textContent='';
+  mBar.textContent='';
+  show('revealScreen');
+  setTimeout(()=>{
+    wBar.style.width=ad.wPct+'%';
+    mBar.style.width=ad.mPct+'%';
+    wBar.textContent='Women '+ad.wPct+'%';
+    mBar.textContent='Men '+ad.mPct+'%';
+  },80);
+  document.getElementById('revealText').innerHTML=ad.explain;
+  const c=COUNTRIES[currentCountry];
+  document.getElementById('revealBtn').textContent=
+    currentAd>=c.ads.length-1?'Country findings':'Next';
+}
+
+function nextAd(){
+  currentAd++;
+  if(currentAd>=COUNTRIES[currentCountry].ads.length) showCountryFinding();
+  else showAd();
+}
+
+function showCountryFinding(){
+  const c=COUNTRIES[currentCountry];
+  makeDots('cfDots');
+  document.getElementById('cfName').textContent=c.name;
+  document.getElementById('cfEgal').textContent=c.egal;
+  document.getElementById('cfText').innerHTML=c.finding;
+  document.getElementById('cfBtn').textContent=
+    currentCountry<COUNTRIES.length-1?'Next country':'Full picture';
+  show('countryFinding');
+}
+
+function nextCountry(){
+  currentCountry++;
+  if(currentCountry>=COUNTRIES.length) showSummary();
+  else showCountryIntro();
+}
+
+function showSummary(){
+  const list=document.getElementById('summaryList');
+  list.innerHTML='';
+  COUNTRIES.forEach(c=>{
+    const avgW=Math.round(c.ads.reduce((s,a)=>s+a.wPct,0)/c.ads.length);
+    const avgM=100-avgW;
+    const row=document.createElement('div');
+    row.className='country-row';
+    row.innerHTML=`
+      <span style="flex:1"><strong style="color:#0A2463">${c.flag} ${c.name}</strong><br><span style="font-size:.76em;color:#718096">${c.egal}</span></span>
+      <span>
+        <div class="mini-bar">
+          <div style="background:#E8A0B0;width:${avgW}%"></div>
+          <div style="background:#7CB9E8;width:${avgM}%"></div>
+        </div>
+        <div style="font-size:.65em;color:#718096;display:flex;justify-content:space-between;width:110px;margin-top:2px">
+          <span>W ${avgW}%</span><span>M ${avgM}%</span>
+        </div>
+      </span>`;
+    list.appendChild(row);
+  });
+  const pct=Math.round(correctGuesses/totalGuesses*100);
+  let verdict='';
+  if(pct>=80) verdict=' Strong intuition for algorithmic patterns.';
+  else if(pct>=55) verdict=' A decent read on the data.';
+  else verdict=' Harder to predict than expected, which is part of the point.';
+  document.getElementById('finalScore').textContent=
+    pct+'% correct ('+correctGuesses+'/'+totalGuesses+').'+verdict;
+  show('summaryScreen');
+}
+</script>
+</body>
+</html>

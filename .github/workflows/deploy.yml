@@ -24,6 +24,12 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      - name: Copy game files to dist
+        run: |
+          cp game-ch2.html dist/
+          cp game-ch3.html dist/
+          cp game-ch4.html dist/
+          cp games.html dist/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

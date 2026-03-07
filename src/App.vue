@@ -7,10 +7,12 @@ import ParanymphsSection from './components/ParanymphsSection.vue'
 import PartySection from './components/PartySection.vue'
 import FooterSection from './components/FooterSection.vue'
 import NavBar from './components/NavBar.vue'
+import KonamiDance from './components/KonamiDance.vue'
 </script>
 
 <template>
   <NavBar />
+  <KonamiDance />
   <main>
     <HeroSection />
     <TimelineSection />
