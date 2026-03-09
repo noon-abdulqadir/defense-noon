@@ -41,6 +41,18 @@ onMounted(() => {
         <div class="party-info-row">
           <div class="party-info">
             <div class="party-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <span class="info-label">Date</span>
+              <span class="info-value">Thursday, 9 April 2026</span>
+            </div>
+          </div>
+
+          <div class="party-divider" />
+
+          <div class="party-info">
+            <div class="party-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <div>
@@ -62,6 +74,11 @@ onMounted(() => {
           </div>
         </div>
 
+        <div class="party-address">
+          <p class="tba-text">Details to be announced</p>
+        </div>
+
+        <!-- ORIGINAL ADDRESS/MAP — uncomment to restore:
         <div class="party-address">
           <p>Nieuwe Doelenstraat 20, 1012 CP Amsterdam</p>
           <div class="party-map-container">
@@ -85,7 +102,9 @@ onMounted(() => {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
         </div>
+        -->
       </div>
+
     </div>
   </section>
 </template>
@@ -227,6 +246,15 @@ h2 {
   color: var(--blue-pale);
   font-size: 0.95rem;
   margin-bottom: 0.75rem;
+}
+
+.tba-text {
+  color: var(--lime) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 0 !important;
+  padding: 0.5rem 0;
 }
 
 .party-map-container {

@@ -8,6 +8,7 @@ import PartySection from './components/PartySection.vue'
 import FooterSection from './components/FooterSection.vue'
 import NavBar from './components/NavBar.vue'
 import KonamiDance from './components/KonamiDance.vue'
+import SecretGift from './components/SecretGift.vue'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import KonamiDance from './components/KonamiDance.vue'
   <KonamiDance />
   <main>
     <HeroSection />
+    <SecretGift />
     <TimelineSection />
     <VenueSection />
     <ParanymphsSection />

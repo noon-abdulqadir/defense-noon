@@ -41,6 +41,10 @@ const imgError = ref(false)
       <p class="footer-date">
         9 April 2026 &middot; Amsterdam
       </p>
+
+      <p class="konami-hint" aria-hidden="true">
+        &uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA
+      </p>
     </div>
   </footer>
 </template>
@@ -156,5 +160,14 @@ const imgError = ref(false)
 .footer-date {
   font-size: 0.85rem;
   color: var(--gray-400);
+}
+
+.konami-hint {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--gray-200);
+  opacity: 0.4;
+  user-select: none;
 }
 </style>

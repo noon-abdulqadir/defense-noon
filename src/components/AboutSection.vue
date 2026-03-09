@@ -25,27 +25,27 @@ onMounted(() => {
       </p>
 
       <div class="chapters">
-        <div class="chapter-card">
+        <a class="chapter-card chapter-link" href="/game-ch2.html" target="_blank" rel="noopener">
           <div class="chapter-num">Ch. 2</div>
           <h3>Sourcing Phase: Stereotypical Frames</h3>
           <p>
             Stereotypical frames in online job ads mirror stereotypes of social groups dominant in said occupational domain.
           </p>
-        </div>
-        <div class="chapter-card">
+        </a>
+        <a class="chapter-card chapter-link" href="/game-ch3.html" target="_blank" rel="noopener">
           <div class="chapter-num">Ch. 3</div>
           <h3>Sourcing Phase: Platform Delivery</h3>
           <p>
             Online platforms deliver job ads along stereotypical lines, but country-level individualistic and egalitarian norms alter delivery patterns.
           </p>
-        </div>
-        <div class="chapter-card">
+        </a>
+        <a class="chapter-card chapter-link" href="/game-ch4.html" target="_blank" rel="noopener">
           <div class="chapter-num">Ch. 4</div>
           <h3>Selection Phase: AI Recommendations</h3>
           <p>
             Candidate selection is not fully dictated by AI recommendations, but these do influence more subtle candidate fit assessments.
           </p>
-        </div>
+        </a>
       </div>
 
       <p class="about-conclusion">
@@ -129,6 +129,12 @@ h2 {
   border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
+}
+
+.chapter-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .chapter-card:hover {

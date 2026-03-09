@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frame Spotter - Chapter 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0A2463;
+  --blue: #1565C0;
+  --blue-mid: #3E8EDE;
+  --blue-light: #7CB9E8;
+  --blue-pale: #B8D8F0;
+  --lime: #C5E84C;
+  --lime-light: #D4F06A;
+  --lime-pale: #EEFAB8;
+  --white: #FFFFFF;
+  --off-white: #F8FAFB;
+  --gray-100: #F1F5F9;
+  --gray-200: #E2E8F0;
+  --gray-400: #94A3B8;
+  --gray-600: #475569;
+  --gray-800: #1E293B;
+  --warm-rose: #C75068;
+  --warm-rose-bg: #FDF0F3;
+  --warm-rose-border: #F0C4CE;
+  --comp-blue: #1565C0;
+  --comp-blue-bg: #EFF6FF;
+  --comp-blue-border: #B8D8F0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--off-white);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-800);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: 48px;
+}
+
+::selection {
+  background: var(--lime);
+  color: var(--navy);
+}
+
+.game-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 8px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-home {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.nav-home:hover { color: var(--blue); }
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-link {
+  font-size: 0.72em;
+  color: var(--gray-400);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.nav-link:hover { color: var(--navy); background: var(--gray-100); }
+.nav-link.active { color: var(--blue); background: rgba(21, 101, 192, 0.08); }
+
+.container {
+  max-width: 620px;
+  width: 100%;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.screen {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.4em;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+  line-height: 1.15;
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  color: var(--gray-600);
+  font-size: 0.95em;
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.chapter-label {
+  font-size: 0.78em;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--gray-200);
+  box-shadow: 0 1px 3px rgba(10, 36, 99, 0.04), 0 4px 12px rgba(10, 36, 99, 0.03);
+  margin: 20px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  border: none;
+  font-size: 0.95em;
+  font-family: 'Inter', system-ui, sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin: 5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(10, 36, 99, 0.1);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: var(--navy);
+  color: var(--white);
+  padding: 14px 42px;
+  font-size: 1em;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: var(--blue);
+  box-shadow: 0 6px 24px rgba(10, 36, 99, 0.18);
+}
+
+.btn-warm {
+  background: var(--white);
+  color: var(--warm-rose);
+  border: 2px solid var(--warm-rose-border);
+  padding: 12px 28px;
+  font-weight: 600;
+}
+
+.btn-warm:hover:not(:disabled) {
+  background: var(--warm-rose-bg);
+  border-color: var(--warm-rose);
+}
+
+.btn-comp {
+  background: var(--white);
+  color: var(--comp-blue);
+  border: 2px solid var(--comp-blue-border);
+  padding: 12px 28px;
+  font-weight: 600;
+}
+
+.btn-comp:hover:not(:disabled) {
+  background: var(--comp-blue-bg);
+  border-color: var(--comp-blue);
+}
+
+.btn-secondary {
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-weight: 600;
+}
+
+.btn-secondary:hover {
+  background: var(--gray-200);
+  color: var(--navy);
+}
+
+.btn-lime {
+  background: var(--lime);
+  color: var(--navy);
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(197, 232, 76, 0.35);
+}
+
+.btn-lime:hover {
+  background: var(--lime-light);
+  box-shadow: 0 6px 28px rgba(197, 232, 76, 0.5);
+}
+
+.ad-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 0;
+  margin: 16px 0;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(10, 36, 99, 0.04), 0 4px 12px rgba(10, 36, 99, 0.03);
+  overflow: hidden;
+}
+
+.ad-accent {
+  height: 4px;
+  width: 100%;
+}
+
+.ad-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 24px 0;
+}
+
+.ad-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--gray-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+
+.ad-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+
+.ad-company {
+  font-size: 0.82em;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+
+.ad-body {
+  font-size: 0.9em;
+  color: var(--gray-600);
+  line-height: 1.7;
+  padding: 12px 24px;
+}
+
+.ad-meta {
+  display: flex;
+  gap: 8px;
+  padding: 0 24px 16px;
+  flex-wrap: wrap;
+}
+
+.ad-tag {
+  font-size: 0.72em;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: var(--gray-100);
+  color: var(--gray-600);
+  font-weight: 500;
+}
+
+.feedback {
+  min-height: 55px;
+  padding: 10px 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.feedback.correct { color: #2E7D4F; }
+.feedback.incorrect { color: #9A6B28; }
+
+.feedback-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 12px;
+  padding: 0;
+  margin: 16px 0;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(10, 36, 99, 0.04), 0 4px 12px rgba(10, 36, 99, 0.03);
+  overflow: hidden;
+}
+
+.feedback-card .ad-body {
+  margin-bottom: 0;
+}
+
+.feedback-explanation {
+  font-size: 0.9em;
+  line-height: 1.7;
+  color: var(--gray-800);
+  border-top: 1px solid var(--gray-200);
+  padding: 14px 24px;
+  margin-top: 4px;
+}
+
+.highlight-word {
+  background: var(--lime);
+  color: var(--navy);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: .88em;
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gray-200);
+  transition: all 0.3s ease;
+}
+
+.dot.done { background: var(--navy); }
+.dot.current { background: var(--blue); transform: scale(1.4); }
+
+.sector-label {
+  font-size: 0.78em;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.finding-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 18px 0;
+  border: 1px solid var(--gray-200);
+  border-left: 3px solid var(--navy);
+  text-align: left;
+  line-height: 1.7;
+  font-size: 0.93em;
+  box-shadow: 0 1px 3px rgba(10, 36, 99, 0.04);
+}
+
+.finding-card strong { color: var(--navy); }
+
+.stat-bar {
+  display: flex;
+  height: 26px;
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 14px 0;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+.stat-warm {
+  background: var(--warm-rose-border);
+  color: var(--warm-rose);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 1s ease;
+}
+
+.stat-comp {
+  background: var(--blue-pale);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 1s ease;
+}
+
+.sector-list { text-align: left; margin: 12px 0; }
+
+.sector-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.sector-row:last-child { border: none; }
+
+.score-label {
+  font-size: 0.9em;
+  color: var(--gray-600);
+  margin-top: 16px;
+  font-weight: 500;
+}
+
+.ad-count {
+  font-size: 0.8em;
+  color: var(--gray-400);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.question-prompt {
+  font-size: 0.92em;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 0.82em;
+  color: var(--gray-600);
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+.legend span::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.legend .lw::before { background: var(--warm-rose-border); }
+.legend .lc::before { background: var(--blue-pale); }
+
+.intro-categories p {
+  margin-top: 10px;
+}
+
+.intro-categories .cat-label {
+  font-weight: 600;
+}
+
+.intro-categories .cat-warm { color: var(--warm-rose); }
+.intro-categories .cat-comp { color: var(--comp-blue); }
+
+.intro-note {
+  margin-top: 14px;
+  color: var(--gray-600);
+}
+
+@media (max-width: 600px) {
+  body { display: block; }
+  .container { padding: 20px 16px; }
+  h1 { font-size: 1.9em; }
+  .ad-body { font-size: 0.88em; }
+  .btn-warm, .btn-comp { padding: 14px 20px; font-size: 0.93em; min-height: 48px; display: block; width: 100%; margin: 6px 0; }
+  .btn { min-height: 48px; }
+  .card { padding: 22px 18px; }
+  .ad-header { padding: 16px 16px 0; }
+  .ad-meta { padding: 0 16px 12px; }
+  .ad-icon { width: 34px; height: 34px; font-size: 1em; }
+  .game-nav { padding: 6px 16px; }
+  .feedback-explanation { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="game-nav">
+  <a href="games.html" class="nav-home">The Hiring Game</a>
+  <div class="nav-links">
+    <a href="game-ch2.html" class="nav-link active">Ch 2</a>
+    <a href="game-ch3.html" class="nav-link">Ch 3</a>
+    <a href="game-ch4.html" class="nav-link">Ch 4</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<div class="screen active" id="titleScreen">
+  <div class="chapter-label">Chapter 2</div>
+  <h1>Frame Spotter</h1>
+  <p class="subtitle">Job ads frame roles using different kinds of language.<br>The framing is more subtle than you might expect.</p>
+  <div class="card intro-categories" style="text-align:left;line-height:1.7;font-size:.93em">
+    <p>Researchers classify job ad language into two categories:</p>
+    <p><span class="cat-label cat-warm">Warmth</span> . caring, supportive, collaborative, empathetic, nurturing</p>
+    <p><span class="cat-label cat-comp">Competence</span> . decisive, analytical, ambitious, innovative, strategic</p>
+    <p class="intro-note">You will read realistic job ads from five sectors. Each ad mixes both types of language, but one category dominates. Your task is to identify which framing leads the ad. After each sector, you will see what the research actually found.</p>
+  </div>
+  <button class="btn btn-primary" onclick="startGame()">Begin</button>
+</div>
+
+<div class="screen" id="sectorIntro">
+  <div class="progress-dots" id="sectorDots"></div>
+  <h2 id="sectorName"></h2>
+  <p class="subtitle" id="sectorDesc"></p>
+  <button class="btn btn-primary" onclick="startSorting()">Read the ads</button>
+</div>
+
+<div class="screen" id="adScreen">
+  <div class="progress-dots" id="adDots"></div>
+  <p class="ad-count" id="adCount"></p>
+  <div class="ad-card" id="adCard">
+    <div class="ad-accent" id="adAccent"></div>
+    <div class="ad-header">
+      <div class="ad-icon" id="adIcon"></div>
+      <div>
+        <div class="ad-title" id="adTitle"></div>
+        <div class="ad-company" id="adCompany"></div>
+      </div>
+    </div>
+    <div class="ad-body" id="adBody"></div>
+    <div class="ad-meta" id="adMeta"></div>
+  </div>
+  <p class="question-prompt">Does this ad lean more toward warmth or competence framing?</p>
+  <div>
+    <button class="btn btn-warm" id="bWarm" onclick="choose('warm')">Warmth</button>
+    <button class="btn btn-comp" id="bComp" onclick="choose('competence')">Competence</button>
+  </div>
+  <div class="feedback" id="feedback"></div>
+</div>
+
+<div class="screen" id="feedbackScreen">
+  <div class="progress-dots" id="fbDots"></div>
+  <p class="ad-count" id="fbCount"></p>
+  <div class="feedback-card" id="fbCard"></div>
+  <button class="btn btn-primary" id="fbNextBtn" onclick="nextAd()">Next ad</button>
+</div>
+
+<div class="screen" id="findingScreen">
+  <div class="progress-dots" id="findingDots"></div>
+  <div class="sector-label" id="findingDem"></div>
+  <h2 id="findingTitle"></h2>
+  <div class="legend"><span class="lw">Warmth</span><span class="lc">Competence</span></div>
+  <div class="stat-bar">
+    <div class="stat-warm" id="warmBar"></div>
+    <div class="stat-comp" id="compBar"></div>
+  </div>
+  <div class="finding-card" id="findingText"></div>
+  <button class="btn btn-primary" id="findingBtn" onclick="nextSector()">Next sector</button>
+</div>
+
+<div class="screen" id="summaryScreen">
+  <h2>The pattern across sectors</h2>
+  <p class="subtitle">Warmth vs. competence framing in job advertisements</p>
+  <div class="card">
+    <div class="legend" style="margin-bottom:12px"><span class="lw">Warmth</span><span class="lc">Competence</span></div>
+    <div class="sector-list" id="summaryList"></div>
+  </div>
+  <div class="finding-card">
+    <strong>Key finding:</strong> Job ads in female-dominated sectors use significantly more warmth language, while male-dominated sectors lean on competence language. This framing is not neutral. It mirrors and reinforces existing gender stereotypes, potentially discouraging cross-gender applicants before they even apply.
+  </div>
+  <p class="score-label" id="finalScore"></p>
+  <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+    <a href="game-ch3.html" class="btn btn-primary" style="text-decoration:none">Next: Who Sees This Ad?</a>
+    <a href="games.html" class="btn btn-secondary" style="text-decoration:none">All games</a>
+    <button class="btn btn-secondary" onclick="location.reload()">Start over</button>
+  </div>
+</div>
+
+</div>
+
+<script>
+const SECTORS = [
+  {
+    name: 'Healthcare',
+    desc: 'Nursing, caregiving, therapy, medical support',
+    demographics: 'Female-dominated sector',
+    icon: '\u{1F3E5}',
+    color: '#E8A0B0',
+    ads: [
+      {
+        title: 'Registered Nurse, Pediatric Ward',
+        company: "St. Mary's Children's Hospital",
+        location: 'London, UK',
+        type: 'Full-time',
+        posted: '2d ago',
+        body: 'We are seeking a Registered Nurse to join our close-knit, supportive pediatric care team. The ideal candidate brings strong clinical assessment skills and evidence-based decision-making, but above all, compassion for young patients and genuine warmth and empathy.',
+        answer: 'warm',
+        warmWords: ['supportive', 'compassion', 'warmth', 'empathy', 'close-knit'],
+        compWords: ['clinical assessment skills', 'evidence-based'],
+        explanation: 'Despite competence language like "clinical assessment" and "evidence-based," the warmth signals dominate. The framing centers the role around caring rather than technical expertise.'
+      },
+      {
+        title: 'Clinical Laboratory Manager',
+        company: 'PathLab Diagnostics Group',
+        location: 'Manchester, UK',
+        type: 'Full-time',
+        posted: '5d ago',
+        body: 'We are hiring a Clinical Laboratory Manager to oversee diagnostic operations across three facilities. The role demands optimizing efficiency, ensuring strict regulatory compliance, and driving improvements through an analytical, independent approach. Strong leadership is essential. We also value a respectful approach to collaboration.',
+        answer: 'competence',
+        warmWords: ['respectful', 'collaboration'],
+        compWords: ['optimizing', 'efficiency', 'regulatory compliance', 'analytical', 'independent', 'strong leadership', 'driving'],
+        explanation: 'The ad mentions "respectful" and "collaboration," but it is built around competence and agency language. A healthcare role framed like a corporate management position.'
+      },
+      {
+        title: 'Occupational Therapist, Community Services',
+        company: 'Community Health Trust',
+        location: 'Bristol, UK',
+        type: 'Full-time',
+        posted: '1d ago',
+        body: 'We are looking for a compassionate Occupational Therapist to join our community rehabilitation program. Building trusting, long-term therapeutic relationships is at the heart of this role. The ideal candidate is naturally empathetic and genuinely motivated by helping others. Clinical registration and case management abilities are required.',
+        answer: 'warm',
+        warmWords: ['compassionate', 'trusting', 'empathetic', 'helping others'],
+        compWords: ['clinical registration', 'case management abilities'],
+        explanation: 'The competence language is limited to qualifications. The role itself is framed through warmth: the therapist is described through their caring nature rather than their clinical skill set.'
+      }
+    ],
+    warmPct: 68, compPct: 32,
+    finding: 'Healthcare job ads use <strong>significantly more warmth language</strong>. Even when clinical expertise is essential, the framing foregrounds emotional labor, reinforcing the expectation that healthcare workers should be caring and self-sacrificing.'
+  },
+  {
+    name: 'Technology',
+    desc: 'Software, engineering, IT, data science',
+    demographics: 'Male-dominated sector',
+    icon: '\u{1F4BB}',
+    color: '#7CB9E8',
+    ads: [
+      {
+        title: 'Senior Backend Engineer',
+        company: 'DataScale Technologies',
+        location: 'Berlin, Germany',
+        type: 'Full-time \u00B7 Remote',
+        posted: '3d ago',
+        body: 'We are looking for a Senior Backend Engineer to architect and scale distributed systems. You will make independent technical decisions, take full ownership of production reliability, and solve complex problems with a rigorous, methodical mindset. We do value open communication and hold regular knowledge-sharing sessions.',
+        answer: 'competence',
+        warmWords: ['open communication', 'knowledge-sharing'],
+        compWords: ['architect', 'scale', 'independent', 'ownership', 'complex problems', 'rigorous', 'methodical'],
+        explanation: 'The brief mentions of "open communication" and "knowledge-sharing" are far outweighed by competence and agency terms. The role is framed around individual mastery and autonomous decision-making.'
+      },
+      {
+        title: 'UX Research Lead',
+        company: 'UserFirst Labs',
+        location: 'Amsterdam, NL',
+        type: 'Full-time',
+        posted: '1d ago',
+        body: 'We are hiring a UX Research Lead to deeply understand the needs and frustrations of our users. You will build empathetic relationships with research participants, advocate for their perspective, and collaborate closely with product teams. Someone who genuinely listens and translates human insight into actionable recommendations.',
+        answer: 'warm',
+        warmWords: ['understand', 'empathetic', 'advocate', 'genuinely listens', 'human insight', 'collaborate'],
+        compWords: ['actionable'],
+        explanation: 'A tech role framed primarily through warmth. Words like "empathetic," "genuinely listens," and "advocate" position the researcher as a caring bridge between users and the company.'
+      },
+      {
+        title: 'Machine Learning Engineer',
+        company: 'Neural Dynamics AI',
+        location: 'Stockholm, SE',
+        type: 'Full-time',
+        posted: '4d ago',
+        body: 'Our AI division needs an ambitious Machine Learning Engineer to independently design experiments, optimize training pipelines, and deliver innovative solutions. The ideal candidate has a sharp, analytical mind, a competitive drive, and the resilience to iterate through failure. We maintain a supportive team environment.',
+        answer: 'competence',
+        warmWords: ['supportive'],
+        compWords: ['ambitious', 'independently', 'optimize', 'innovative', 'sharp', 'analytical', 'competitive', 'resilience'],
+        explanation: 'The single warmth word "supportive" appears as an afterthought. The ad is saturated with competence language. Even "resilience" and "competitive" are coded as competence: they signal individual toughness, not interpersonal connection.'
+      }
+    ],
+    warmPct: 30, compPct: 70,
+    finding: 'Tech job ads lean heavily on <strong>competence language</strong>. Even seemingly neutral words like "independent" and "resilient" carry competence coding, aligning with stereotypically masculine traits.'
+  },
+  {
+    name: 'Education',
+    desc: 'Teaching, childcare, academic support',
+    demographics: 'Female-dominated sector',
+    icon: '\u{1F393}',
+    color: '#C5E84C',
+    ads: [
+      {
+        title: 'Primary School Teacher, Years 1-3',
+        company: 'Oakwood Primary Academy',
+        location: 'Leeds, UK',
+        type: 'Full-time',
+        posted: '2d ago',
+        body: 'We are seeking a warm, patient educator who can create a nurturing classroom where every child feels safe and valued. You will build trusting relationships with students and their families. A genuine love for working with young children and emotional sensitivity are essential.',
+        answer: 'warm',
+        warmWords: ['warm', 'patient', 'nurturing', 'safe', 'valued', 'trusting', 'genuine love', 'emotional sensitivity'],
+        compWords: [],
+        explanation: 'This ad is heavily saturated with warmth language. The teacher is framed as a caregiver first and a professional second. "Nurturing," "emotional sensitivity," and "genuine love" emphasize emotional labor while barely mentioning pedagogical expertise.'
+      },
+      {
+        title: 'Head of Mathematics Department',
+        company: 'Westminster College',
+        location: 'London, UK',
+        type: 'Full-time',
+        posted: '6d ago',
+        body: 'We are recruiting a Head of Mathematics to lead curriculum development and raise attainment standards. You will demonstrate strategic thinking, use data to drive teaching quality, and take accountability for departmental performance targets. We also value a leader who can inspire and mentor junior colleagues.',
+        answer: 'competence',
+        warmWords: ['inspire', 'mentor'],
+        compWords: ['lead', 'strategic thinking', 'data', 'drive', 'accountability', 'performance targets'],
+        explanation: 'Despite being in education, this reads like a corporate management posting. "Inspire" and "mentor" are present but far outnumbered by competence terms. Seniority shifts the framing.'
+      },
+      {
+        title: 'Teaching Assistant, Special Educational Needs',
+        company: 'Greenfield SEN Centre',
+        location: 'Birmingham, UK',
+        type: 'Part-time',
+        posted: '1d ago',
+        body: 'We are looking for a devoted Teaching Assistant to provide emotional support for children with special educational needs. You should be kind, approachable, and genuinely committed to helping every child. A patient, understanding temperament and experience with communication aids are valued. We offer a caring, close-knit staff community.',
+        answer: 'warm',
+        warmWords: ['devoted', 'emotional support', 'kind', 'approachable', 'genuinely committed', 'helping', 'patient', 'understanding', 'caring', 'close-knit'],
+        compWords: ['communication aids'],
+        explanation: 'One of the most warmth-dense ads in the dataset. Nearly every sentence includes a warmth term. The role is framed entirely around emotional caregiving.'
+      }
+    ],
+    warmPct: 65, compPct: 35,
+    finding: 'Education emphasizes <strong>warmth and emotional labor</strong>. Words like "patient," "nurturing," and "devoted" frame teaching as inherently about caring. Notably, seniority shifts the framing: the department head role is coded through competence.'
+  },
+  {
+    name: 'Construction',
+    desc: 'Building, engineering, skilled trades, project management',
+    demographics: 'Male-dominated sector',
+    icon: '\u{1F3D7}\uFE0F',
+    color: '#F0AD4E',
+    ads: [
+      {
+        title: 'Site Manager, Commercial Construction',
+        company: 'BuildRight Construction Ltd',
+        location: 'Edinburgh, UK',
+        type: 'Full-time',
+        posted: '3d ago',
+        body: 'We need an assertive Site Manager to take command of large-scale building projects. You will make decisive calls on resource allocation, enforce strict safety compliance, and drive subcontractors to meet aggressive milestones. The role demands someone tough under pressure who takes personal accountability.',
+        answer: 'competence',
+        warmWords: [],
+        compWords: ['assertive', 'command', 'decisive', 'enforce', 'strict', 'drive', 'aggressive', 'tough', 'accountability'],
+        explanation: 'This ad contains no warmth language at all. Pure competence and agency framing: dominance, control, and individual toughness in every sentence.'
+      },
+      {
+        title: 'Apprentice Electrician',
+        company: 'Spark Electrical Services',
+        location: 'Dublin, IE',
+        type: 'Apprenticeship',
+        posted: '2d ago',
+        body: 'We are offering an apprenticeship for someone who wants to build a career in electrical installation. You will learn from tradespeople who are genuinely invested in your growth. Our team takes pride in looking out for one another and maintaining a supportive work culture. The ideal apprentice is respectful and willing to ask questions.',
+        answer: 'warm',
+        warmWords: ['genuinely invested', 'growth', 'looking out for one another', 'supportive', 'respectful', 'willing to ask questions'],
+        compWords: [],
+        explanation: 'Unusually warm for a construction role. It emphasizes mentorship, team support, and personal development rather than toughness. This kind of framing is rare in male-dominated industries.'
+      },
+      {
+        title: 'Structural Engineer, Infrastructure Projects',
+        company: 'InfraStruct Engineering',
+        location: 'Rotterdam, NL',
+        type: 'Full-time',
+        posted: '5d ago',
+        body: 'We seek a highly competent Structural Engineer for major infrastructure projects. The role requires rigorous attention to standards, analytical capability for complex calculations, and the professional judgment to make independent design decisions. You must be efficient and confident presenting to stakeholders. We offer a collaborative environment.',
+        answer: 'competence',
+        warmWords: ['collaborative'],
+        compWords: ['highly competent', 'rigorous', 'analytical', 'complex', 'independent', 'professional judgment', 'efficient', 'confident'],
+        explanation: 'The lone mention of "collaborative" is buried at the end. Every other descriptor points to individual competence: rigorous, analytical, independent, confident, efficient.'
+      }
+    ],
+    warmPct: 25, compPct: 75,
+    finding: 'Construction ads are dominated by <strong>competence and agency language</strong>. Words like "assertive," "tough," and "decisive" frame roles around stereotypically masculine traits. The apprenticeship ad is a notable exception.'
+  },
+  {
+    name: 'Finance',
+    desc: 'Banking, insurance, accounting, consulting',
+    demographics: 'Mixed sector, leaning male',
+    icon: '\u{1F4BC}',
+    color: '#94A3B8',
+    ads: [
+      {
+        title: 'Relationship Manager, Private Banking',
+        company: 'Sterling Private Bank',
+        location: 'Zurich, CH',
+        type: 'Full-time',
+        posted: '4d ago',
+        body: 'We are looking for a Relationship Manager who can build trusting connections with high-net-worth clients. The ideal candidate is personable, genuinely attentive, and committed to providing a warm, caring service experience where clients feel heard and understood. Financial product knowledge and regulatory awareness are expected.',
+        answer: 'warm',
+        warmWords: ['trusting', 'personable', 'genuinely attentive', 'warm', 'caring', 'heard', 'understood'],
+        compWords: ['financial product knowledge', 'regulatory awareness'],
+        explanation: 'A finance role framed primarily through warmth. The relationship manager is positioned as a caring advisor, not a financial expert. Competence terms are confined to qualifications.'
+      },
+      {
+        title: 'Quantitative Risk Analyst',
+        company: 'RiskEdge Analytics',
+        location: 'Frankfurt, DE',
+        type: 'Full-time',
+        posted: '1d ago',
+        body: 'We are hiring a Quantitative Risk Analyst to develop sophisticated statistical models for risk assessment. You must demonstrate analytical precision, independent problem-solving, and the intellectual rigor to challenge existing methodologies. The role demands someone ambitious, decisive, and driven. We maintain a results-oriented team culture.',
+        answer: 'competence',
+        warmWords: [],
+        compWords: ['sophisticated', 'analytical precision', 'independent', 'intellectual rigor', 'challenge', 'ambitious', 'decisive', 'driven', 'results-oriented'],
+        explanation: 'Zero warmth language. Framed entirely through individual intellectual power and competitive drive. "Results-oriented" and "ambitious" are classic competence-coded terms.'
+      },
+      {
+        title: 'Financial Adviser, Retail Branch',
+        company: 'Nationwide Financial Services',
+        location: 'Cardiff, UK',
+        type: 'Full-time',
+        posted: '3d ago',
+        body: 'We are seeking a Financial Adviser to guide customers through decisions about savings, mortgages, and insurance. You will need a warm, approachable manner and the patience to explain complex products simply. Building loyal client relationships through sincere, trustworthy service is central to this role. Sales targets and compliance records are also part of the job.',
+        answer: 'warm',
+        warmWords: ['guide', 'warm', 'approachable', 'patience', 'loyal', 'sincere', 'trustworthy'],
+        compWords: ['sales targets', 'compliance records'],
+        explanation: 'Tricky: sales targets and compliance are competence signals. But the overall framing centers the adviser as a caring guide. The competence demands are secondary to the warmth identity of the role.'
+      }
+    ],
+    warmPct: 35, compPct: 65,
+    finding: 'Finance uses <strong>mostly competence language</strong>, but client-facing roles show a notable warmth lean. Framing shifts depending on who the role serves: internal positions are coded through competence, while customer-facing roles are coded through warmth.'
+  }
+];
+
+let currentSector = 0, currentAd = 0, totalCorrect = 0, totalAnswered = 0;
+
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function makeDots(containerId) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  SECTORS.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i < currentSector ? ' done' : '') + (i === currentSector ? ' current' : '');
+    c.appendChild(d);
+  });
+}
+
+function startGame() {
+  currentSector = 0; currentAd = 0; totalCorrect = 0; totalAnswered = 0;
+  showSectorIntro();
+}
+
+function showSectorIntro() {
+  const s = SECTORS[currentSector];
+  makeDots('sectorDots');
+  document.getElementById('sectorName').textContent = s.name;
+  document.getElementById('sectorDesc').textContent = s.desc;
+  show('sectorIntro');
+}
+
+function startSorting() {
+  currentAd = 0;
+  showAd();
+}
+
+function showAd() {
+  const s = SECTORS[currentSector];
+  const ad = s.ads[currentAd];
+  makeDots('adDots');
+  document.getElementById('adCount').textContent = s.name + ' \u00B7 Ad ' + (currentAd + 1) + ' / ' + s.ads.length;
+  document.getElementById('adAccent').style.background = s.color;
+  document.getElementById('adIcon').textContent = s.icon;
+  document.getElementById('adTitle').textContent = ad.title;
+  document.getElementById('adCompany').textContent = ad.company;
+  document.getElementById('adBody').textContent = ad.body;
+  document.getElementById('adMeta').innerHTML =
+    '<span class="ad-tag">' + ad.location + '</span>' +
+    '<span class="ad-tag">' + ad.type + '</span>' +
+    '<span class="ad-tag">' + ad.posted + '</span>';
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('feedback').className = 'feedback';
+  document.getElementById('bWarm').disabled = false;
+  document.getElementById('bComp').disabled = false;
+  show('adScreen');
+}
+
+function highlightWords(text, warmWords, compWords) {
+  let result = text;
+  const allWords = warmWords.concat(compWords);
+  allWords.sort((a, b) => b.length - a.length);
+  allWords.forEach(word => {
+    const regex = new RegExp('(' + word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    result = result.replace(regex, '<span class="highlight-word">$1</span>');
+  });
+  return result;
+}
+
+function choose(cat) {
+  const s = SECTORS[currentSector];
+  const ad = s.ads[currentAd];
+  const fb = document.getElementById('feedback');
+  totalAnswered++;
+  document.getElementById('bWarm').disabled = true;
+  document.getElementById('bComp').disabled = true;
+
+  const correct = cat === ad.answer;
+  if (correct) totalCorrect++;
+
+  const catLabel = ad.answer === 'warm' ? 'warmth' : 'competence';
+
+  if (correct) {
+    fb.className = 'feedback correct';
+    fb.innerHTML = '<strong>Correct.</strong> This ad leans ' + catLabel + '.';
+  } else {
+    fb.className = 'feedback incorrect';
+    fb.innerHTML = '<strong>Not quite.</strong> This ad actually leans ' + catLabel + '.';
+  }
+
+  setTimeout(() => {
+    showFeedback(ad);
+  }, 1200);
+}
+
+function showFeedback(ad) {
+  const s = SECTORS[currentSector];
+  makeDots('fbDots');
+  document.getElementById('fbCount').textContent = s.name + ' \u00B7 Ad ' + (currentAd + 1) + ' / ' + s.ads.length;
+
+  var metaHtml =
+    '<span class="ad-tag">' + ad.location + '</span>' +
+    '<span class="ad-tag">' + ad.type + '</span>' +
+    '<span class="ad-tag">' + ad.posted + '</span>';
+
+  document.getElementById('fbCard').innerHTML =
+    '<div class="ad-accent" style="background:' + s.color + '"></div>' +
+    '<div class="ad-header" style="padding-top:16px">' +
+      '<div class="ad-icon">' + s.icon + '</div>' +
+      '<div>' +
+        '<div class="ad-title">' + ad.title + '</div>' +
+        '<div class="ad-company">' + ad.company + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="ad-body">' + highlightWords(ad.body, ad.warmWords, ad.compWords) + '</div>' +
+    '<div class="ad-meta">' + metaHtml + '</div>' +
+    '<div class="feedback-explanation">' + ad.explanation + '</div>';
+
+  const isLast = currentAd >= s.ads.length - 1;
+  document.getElementById('fbNextBtn').textContent = isLast ? 'See sector findings' : 'Next ad';
+
+  show('feedbackScreen');
+}
+
+function nextAd() {
+  currentAd++;
+  const s = SECTORS[currentSector];
+  if (currentAd >= s.ads.length) {
+    showFinding();
+  } else {
+    showAd();
+  }
+}
+
+function showFinding() {
+  const s = SECTORS[currentSector];
+  makeDots('findingDots');
+  document.getElementById('findingDem').textContent = s.demographics;
+  document.getElementById('findingTitle').textContent = s.name;
+  document.getElementById('warmBar').style.width = '0%';
+  document.getElementById('compBar').style.width = '0%';
+  show('findingScreen');
+  setTimeout(() => {
+    document.getElementById('warmBar').style.width = s.warmPct + '%';
+    document.getElementById('warmBar').textContent = s.warmPct + '%';
+    document.getElementById('compBar').style.width = s.compPct + '%';
+    document.getElementById('compBar').textContent = s.compPct + '%';
+  }, 100);
+  document.getElementById('findingText').innerHTML = s.finding;
+  document.getElementById('findingBtn').textContent = currentSector < SECTORS.length - 1 ? 'Next sector' : 'See the full picture';
+}
+
+function nextSector() {
+  currentSector++;
+  if (currentSector >= SECTORS.length) showSummary();
+  else showSectorIntro();
+}
+
+function showSummary() {
+  const list = document.getElementById('summaryList');
+  list.innerHTML = '';
+  SECTORS.forEach(s => {
+    const row = document.createElement('div');
+    row.className = 'sector-row';
+    row.innerHTML = `
+      <span style="flex:1"><strong style="color:var(--navy)">${s.name}</strong><br><span style="font-size:.78em;color:var(--gray-400)">${s.demographics}</span></span>
+      <span style="width:140px">
+        <div style="display:flex;height:14px;border-radius:50px;overflow:hidden;font-size:.65em;font-weight:600">
+          <div style="background:var(--warm-rose-border);width:${s.warmPct}%;display:flex;align-items:center;justify-content:center;color:var(--warm-rose)">${s.warmPct}%</div>
+          <div style="background:var(--blue-pale);width:${s.compPct}%;display:flex;align-items:center;justify-content:center;color:var(--navy)">${s.compPct}%</div>
+        </div>
+      </span>`;
+    list.appendChild(row);
+  });
+  const pct = Math.round(totalCorrect / totalAnswered * 100);
+  document.getElementById('finalScore').textContent = pct + '% correct (' + totalCorrect + '/' + totalAnswered + ')' +
+    (pct >= 85 ? '. Sharp eye for framing.' : pct >= 65 ? '. Solid read.' : '. Trickier than it looks, right?');
+  show('summaryScreen');
+}
+</script>
+</body>
+</html>
