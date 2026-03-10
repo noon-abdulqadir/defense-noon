@@ -24,6 +24,8 @@ onMounted(() => {
         Content and Consequences of Gender and Age Stereotypes in Job Advertisements
       </p>
 
+      <p class="about-tldr">TLDR? Play the hiring game below!</p>
+
       <div class="chapters">
         <a class="chapter-card chapter-link" href="/game-ch2.html" target="_blank" rel="noopener">
           <div class="chapter-num">Ch. 2</div>
@@ -112,7 +114,17 @@ h2 {
   font-style: italic;
   color: var(--blue-mid);
   font-size: 1.15rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.25rem;
+}
+
+.about-tldr {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 2rem;
+  opacity: 0.75;
 }
 
 .chapters {

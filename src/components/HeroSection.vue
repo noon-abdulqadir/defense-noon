@@ -519,6 +519,10 @@ function downloadCalendar() {
           View Schedule
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
         </a>
+        <a href="#about" class="hero-cta game">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Play the Hiring Game
+        </a>
       </div>
     </div>
   </section>
@@ -916,6 +920,29 @@ function downloadCalendar() {
 
 .hero-cta.secondary:hover svg {
   transform: translateY(3px);
+}
+
+.hero-cta.game {
+  background: transparent;
+  color: var(--blue);
+  border: 2px solid var(--blue-pale);
+  padding: 0.75rem 1.5rem;
+}
+
+.hero-cta.game:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(21, 101, 192, 0.25);
+}
+
+.hero-cta.game svg {
+  transition: transform 0.3s ease;
+}
+
+.hero-cta.game:hover svg {
+  transform: scale(1.2);
 }
 
 @media (max-width: 600px) {
