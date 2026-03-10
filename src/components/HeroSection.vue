@@ -856,21 +856,20 @@ function downloadCalendar() {
   padding: 0.85rem 1.75rem;
   border-radius: 50px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   letter-spacing: 0.02em;
   transition: all 0.3s ease;
   cursor: pointer;
-  border: none;
+  border: 2px solid transparent;
   font-family: inherit;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .hero-cta.rsvp {
   background: var(--lime);
   color: var(--navy);
   box-shadow: 0 4px 24px rgba(197, 232, 76, 0.4);
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   animation: rsvpGlow 2s ease-in-out infinite;
@@ -891,6 +890,7 @@ function downloadCalendar() {
 .hero-cta.calendar {
   background: var(--navy);
   color: var(--white);
+  border-color: var(--navy);
   box-shadow: 0 4px 20px rgba(10, 36, 99, 0.2);
 }
 
@@ -904,8 +904,7 @@ function downloadCalendar() {
 .hero-cta.secondary {
   background: transparent;
   color: var(--blue);
-  border: 2px solid var(--blue-pale);
-  padding: 0.75rem 1.5rem;
+  border-color: var(--blue-pale);
 }
 
 .hero-cta.secondary:hover {
@@ -925,8 +924,7 @@ function downloadCalendar() {
 .hero-cta.game {
   background: transparent;
   color: var(--blue);
-  border: 2px solid var(--blue-pale);
-  padding: 0.75rem 1.5rem;
+  border-color: var(--blue-pale);
 }
 
 .hero-cta.game:hover {
