@@ -137,10 +137,26 @@ h2 {
   cursor: pointer;
 }
 
+.chapter-link::after {
+  content: 'Play game →';
+  display: block;
+  margin-top: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--blue);
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease, letter-spacing 0.2s ease;
+}
+
 .chapter-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(10, 36, 99, 0.08);
   border-color: var(--blue-light);
+}
+
+.chapter-link:hover::after {
+  color: var(--navy);
+  letter-spacing: 0.08em;
 }
 
 .chapter-num {

@@ -45,6 +45,12 @@ const navLinks = [
         <li v-for="link in navLinks" :key="link.href">
           <a :href="link.href" @click="closeMenu">{{ link.label }}</a>
         </li>
+        <li>
+          <a href="https://www.noon-abdulqadir.com" target="_blank" rel="noopener" class="nav-academic">
+            Noon's Academic Website
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -173,6 +179,29 @@ const navLinks = [
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+.nav-academic {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.3rem 0.75rem !important;
+  border: 1.5px solid var(--blue-pale);
+  border-radius: 20px;
+  font-size: 0.82rem !important;
+  color: var(--blue) !important;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-academic::after {
+  display: none !important;
+}
+
+.nav-academic:hover {
+  background: var(--blue);
+  color: var(--white) !important;
+  border-color: var(--blue);
 }
 
 .menu-toggle {
