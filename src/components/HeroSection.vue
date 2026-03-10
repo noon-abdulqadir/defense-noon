@@ -585,7 +585,7 @@ function downloadCalendar() {
   color: var(--blue-mid);
   font-weight: 400;
   max-width: 600px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 3.5rem;
   line-height: 1.5;
   font-style: italic;
   font-family: 'Playfair Display', serif;
