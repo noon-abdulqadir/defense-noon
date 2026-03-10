@@ -425,7 +425,7 @@ function downloadCalendar() {
     'DTEND:20260409T100000Z',
     'SUMMARY:Noon\'s Doctoral Defense - Hiring in the Digital Society',
     'DESCRIPTION:Public defense of the dissertation "Hiring in the Digital Society" by Noon M.F. Abdulqadir',
-    'LOCATION:Agnietenkapel\\, Oudezijds Voorburgwal 229\\, 1012 EZ Amsterdam',
+    'LOCATION:Amstelhaven\\, Amsteldijk 34\\, 1074 HT Amsterdam',
     'END:VEVENT',
     'BEGIN:VEVENT',
     'DTSTART:20260409T163000Z',
@@ -521,7 +521,7 @@ function downloadCalendar() {
         </div>
         <div class="meta-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Agnietenkapel, Amsterdam</span>
+          <span>Amstelhaven, Amsterdam</span>
         </div>
       </div>
       <div class="hero-buttons">
@@ -889,8 +889,8 @@ function downloadCalendar() {
 }
 
 .hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
   justify-content: center;
   gap: 0.6rem;
 }
@@ -997,8 +997,8 @@ function downloadCalendar() {
   }
 
   .hero-buttons {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   .hero-cta {
