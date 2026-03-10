@@ -248,7 +248,7 @@ h2 {
   box-shadow: 0 6px 28px rgba(197, 232, 76, 0.5);
 }
 
-.ad-card {
+.jb-card {
   background: var(--white);
   border: 1px solid var(--gray-200);
   border-radius: 12px;
@@ -259,19 +259,19 @@ h2 {
   overflow: hidden;
 }
 
-.ad-accent {
+.jb-accent {
   height: 4px;
   width: 100%;
 }
 
-.ad-header {
+.jb-header {
   display: flex;
   align-items: flex-start;
   gap: 12px;
   padding: 20px 24px 0;
 }
 
-.ad-icon {
+.jb-icon {
   width: 40px;
   height: 40px;
   border-radius: 10px;
@@ -283,7 +283,7 @@ h2 {
   flex-shrink: 0;
 }
 
-.ad-title {
+.jb-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 1.1em;
   font-weight: 700;
@@ -291,27 +291,27 @@ h2 {
   margin-bottom: 2px;
 }
 
-.ad-company {
+.jb-company {
   font-size: 0.82em;
   color: var(--gray-400);
   font-weight: 500;
 }
 
-.ad-body {
+.jb-body {
   font-size: 0.9em;
   color: var(--gray-600);
   line-height: 1.7;
   padding: 12px 24px;
 }
 
-.ad-meta {
+.jb-meta {
   display: flex;
   gap: 8px;
   padding: 0 24px 16px;
   flex-wrap: wrap;
 }
 
-.ad-tag {
+.jb-tag {
   font-size: 0.72em;
   padding: 3px 10px;
   border-radius: 50px;
@@ -341,7 +341,7 @@ h2 {
   overflow: hidden;
 }
 
-.feedback-card .ad-body {
+.feedback-card .jb-body {
   margin-bottom: 0;
 }
 
@@ -452,7 +452,7 @@ h2 {
   font-weight: 500;
 }
 
-.ad-count {
+.jb-count {
   font-size: 0.8em;
   color: var(--gray-400);
   margin-bottom: 4px;
@@ -509,13 +509,13 @@ h2 {
   body { display: block; }
   .container { padding: 20px 16px; }
   h1 { font-size: 1.9em; }
-  .ad-body { font-size: 0.88em; }
+  .jb-body { font-size: 0.88em; }
   .btn-warm, .btn-comp { padding: 14px 20px; font-size: 0.93em; min-height: 48px; display: block; width: 100%; margin: 6px 0; }
   .btn { min-height: 48px; }
   .card { padding: 22px 18px; }
-  .ad-header { padding: 16px 16px 0; }
-  .ad-meta { padding: 0 16px 12px; }
-  .ad-icon { width: 34px; height: 34px; font-size: 1em; }
+  .jb-header { padding: 16px 16px 0; }
+  .jb-meta { padding: 0 16px 12px; }
+  .jb-icon { width: 34px; height: 34px; font-size: 1em; }
   .game-nav { padding: 6px 16px; }
   .feedback-explanation { padding: 14px 16px; }
 }
@@ -556,18 +556,18 @@ h2 {
 
 <div class="screen" id="adScreen">
   <div class="progress-dots" id="adDots"></div>
-  <p class="ad-count" id="adCount"></p>
-  <div class="ad-card" id="adCard">
-    <div class="ad-accent" id="adAccent"></div>
-    <div class="ad-header">
-      <div class="ad-icon" id="adIcon"></div>
+  <p class="jb-count" id="jobCount"></p>
+  <div class="jb-card" id="jobCard">
+    <div class="jb-accent" id="jobAccent"></div>
+    <div class="jb-header">
+      <div class="jb-icon" id="jobIcon"></div>
       <div>
-        <div class="ad-title" id="adTitle"></div>
-        <div class="ad-company" id="adCompany"></div>
+        <div class="jb-title" id="jobTitle"></div>
+        <div class="jb-company" id="jobCompany"></div>
       </div>
     </div>
-    <div class="ad-body" id="adBody"></div>
-    <div class="ad-meta" id="adMeta"></div>
+    <div class="jb-body" id="jobBody"></div>
+    <div class="jb-meta" id="jobMeta"></div>
   </div>
   <p class="question-prompt">Does this ad lean more toward warmth or competence framing?</p>
   <div>
@@ -579,7 +579,7 @@ h2 {
 
 <div class="screen" id="feedbackScreen">
   <div class="progress-dots" id="fbDots"></div>
-  <p class="ad-count" id="fbCount"></p>
+  <p class="jb-count" id="fbCount"></p>
   <div class="feedback-card" id="fbCard"></div>
   <button class="btn btn-primary" id="fbNextBtn" onclick="nextAd()">Next ad</button>
 </div>
@@ -896,16 +896,16 @@ function showAd() {
   const s = SECTORS[currentSector];
   const ad = s.ads[currentAd];
   makeDots('adDots');
-  document.getElementById('adCount').textContent = s.name + ' \u00B7 Ad ' + (currentAd + 1) + ' / ' + s.ads.length;
-  document.getElementById('adAccent').style.background = s.color;
-  document.getElementById('adIcon').textContent = s.icon;
-  document.getElementById('adTitle').textContent = ad.title;
-  document.getElementById('adCompany').textContent = ad.company;
-  document.getElementById('adBody').textContent = ad.body;
-  document.getElementById('adMeta').innerHTML =
-    '<span class="ad-tag">' + ad.location + '</span>' +
-    '<span class="ad-tag">' + ad.type + '</span>' +
-    '<span class="ad-tag">' + ad.posted + '</span>';
+  document.getElementById('jobCount').textContent = s.name + ' \u00B7 Ad ' + (currentAd + 1) + ' / ' + s.ads.length;
+  document.getElementById('jobAccent').style.background = s.color;
+  document.getElementById('jobIcon').textContent = s.icon;
+  document.getElementById('jobTitle').textContent = ad.title;
+  document.getElementById('jobCompany').textContent = ad.company;
+  document.getElementById('jobBody').textContent = ad.body;
+  document.getElementById('jobMeta').innerHTML =
+    '<span class="jb-tag">' + ad.location + '</span>' +
+    '<span class="jb-tag">' + ad.type + '</span>' +
+    '<span class="jb-tag">' + ad.posted + '</span>';
   document.getElementById('feedback').textContent = '';
   document.getElementById('feedback').className = 'feedback';
   document.getElementById('bWarm').disabled = false;
@@ -956,21 +956,21 @@ function showFeedback(ad) {
   document.getElementById('fbCount').textContent = s.name + ' \u00B7 Ad ' + (currentAd + 1) + ' / ' + s.ads.length;
 
   var metaHtml =
-    '<span class="ad-tag">' + ad.location + '</span>' +
-    '<span class="ad-tag">' + ad.type + '</span>' +
-    '<span class="ad-tag">' + ad.posted + '</span>';
+    '<span class="jb-tag">' + ad.location + '</span>' +
+    '<span class="jb-tag">' + ad.type + '</span>' +
+    '<span class="jb-tag">' + ad.posted + '</span>';
 
   document.getElementById('fbCard').innerHTML =
-    '<div class="ad-accent" style="background:' + s.color + '"></div>' +
-    '<div class="ad-header" style="padding-top:16px">' +
-      '<div class="ad-icon">' + s.icon + '</div>' +
+    '<div class="jb-accent" style="background:' + s.color + '"></div>' +
+    '<div class="jb-header" style="padding-top:16px">' +
+      '<div class="jb-icon">' + s.icon + '</div>' +
       '<div>' +
-        '<div class="ad-title">' + ad.title + '</div>' +
-        '<div class="ad-company">' + ad.company + '</div>' +
+        '<div class="jb-title">' + ad.title + '</div>' +
+        '<div class="jb-company">' + ad.company + '</div>' +
       '</div>' +
     '</div>' +
-    '<div class="ad-body">' + highlightWords(ad.body, ad.warmWords, ad.compWords) + '</div>' +
-    '<div class="ad-meta">' + metaHtml + '</div>' +
+    '<div class="jb-body">' + highlightWords(ad.body, ad.warmWords, ad.compWords) + '</div>' +
+    '<div class="jb-meta">' + metaHtml + '</div>' +
     '<div class="feedback-explanation">' + ad.explanation + '</div>';
 
   const isLast = currentAd >= s.ads.length - 1;

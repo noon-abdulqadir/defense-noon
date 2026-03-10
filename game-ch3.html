@@ -203,7 +203,7 @@ h2{
   border-color:#a0aec0;
 }
 
-.ad-card {
+.jb-card {
   background: #F8FAFB;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
@@ -213,13 +213,13 @@ h2{
   overflow: hidden;
 }
 
-.ad-accent {
+.jb-accent {
   height: 4px;
   width: 100%;
   background: #1565C0;
 }
 
-.ad-header {
+.jb-header {
   display: flex;
   align-items: flex-start;
   gap: 12px;
@@ -240,7 +240,7 @@ h2{
   color: #0A2463;
 }
 
-.ad-title{
+.jb-title{
   font-family:'Playfair Display',Georgia,serif;
   font-size:1.15em;
   font-weight:700;
@@ -248,27 +248,27 @@ h2{
   margin-bottom:2px;
 }
 
-.ad-company {
+.jb-company {
   font-size: 0.82em;
   color: #94A3B8;
   font-weight: 500;
 }
 
-.ad-body{
+.jb-body{
   font-size:.9em;
   color:#4a5568;
   line-height:1.7;
   padding: 12px 24px;
 }
 
-.ad-meta {
+.jb-meta {
   display: flex;
   gap: 8px;
   padding: 0 24px 16px;
   flex-wrap: wrap;
 }
 
-.ad-tag {
+.jb-tag {
   font-size: 0.72em;
   padding: 3px 10px;
   border-radius: 50px;
@@ -411,7 +411,7 @@ h2{
   body { display: block; }
   h1{font-size:1.8em}
   .container{padding:20px 16px}
-  .ad-body{font-size:.88em}
+  .jb-body{font-size:.88em}
   .btn{padding:14px 20px;font-size:.93em;margin:4px;min-height:48px}
   .btn-primary{padding:14px 32px}
   .game-nav { padding: 6px 16px; }
@@ -456,18 +456,18 @@ h2{
 
 <div class="screen" id="adScreen">
   <div class="progress-dots" id="adDots"></div>
-  <p class="meta" id="adCount"></p>
-  <div class="ad-card">
-    <div class="ad-accent"></div>
-    <div class="ad-header">
+  <p class="meta" id="jobCount"></p>
+  <div class="jb-card">
+    <div class="jb-accent"></div>
+    <div class="jb-header">
       <div class="ad-logo" id="adLogo"></div>
       <div>
-        <div class="ad-title" id="adTitle"></div>
-        <div class="ad-company" id="adCompany"></div>
+        <div class="jb-title" id="jobTitle"></div>
+        <div class="jb-company" id="jobCompany"></div>
       </div>
     </div>
-    <div class="ad-body" id="adBody"></div>
-    <div class="ad-meta" id="adMeta"></div>
+    <div class="jb-body" id="jobBody"></div>
+    <div class="jb-meta" id="jobMeta"></div>
   </div>
   <p style="font-size:.92em;margin-bottom:10px;color:#0A2463;font-weight:600">Who saw this ad more?</p>
   <div>
@@ -790,17 +790,17 @@ function showAd(){
   const c=COUNTRIES[currentCountry];
   const ad=c.ads[currentAd];
   makeDots('adDots');
-  document.getElementById('adCount').textContent=c.flag+' '+c.name+' \u00B7 Ad '+(currentAd+1)+'/'+c.ads.length;
-  document.getElementById('adTitle').textContent=ad.title;
-  document.getElementById('adCompany').textContent=ad.company;
+  document.getElementById('jobCount').textContent=c.flag+' '+c.name+' \u00B7 Ad '+(currentAd+1)+'/'+c.ads.length;
+  document.getElementById('jobTitle').textContent=ad.title;
+  document.getElementById('jobCompany').textContent=ad.company;
   document.getElementById('adLogo').textContent=ad.company.charAt(0);
-  document.getElementById('adBody').textContent=ad.body;
-  var metaEl=document.getElementById('adMeta');
+  document.getElementById('jobBody').textContent=ad.body;
+  var metaEl=document.getElementById('jobMeta');
   metaEl.innerHTML='';
   var tags=[ad.location,ad.type,ad.posted];
   tags.forEach(function(t){
     var span=document.createElement('span');
-    span.className='ad-tag';
+    span.className='jb-tag';
     span.textContent=t;
     metaEl.appendChild(span);
   });
