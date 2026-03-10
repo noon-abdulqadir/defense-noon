@@ -27,23 +27,23 @@ onMounted(() => {
       <p class="about-tldr">TLDR? Play the hiring game below!</p>
 
       <div class="chapters">
-        <a class="chapter-card chapter-link" href="/game-ch2.html" target="_blank" rel="noopener">
+        <a class="chapter-card chapter-link" href="/game-ch2.html" target="_blank" rel="noopener noreferrer" aria-label="Play Chapter 2: Sourcing Phase – Stereotypical Frames (opens in new tab)">
           <div class="chapter-num">Ch. 2</div>
-          <h3>Sourcing Phase: Stereotypical Frames</h3>
+          <h3>Sourcing Phase: Stereotypical Frames<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:4px;vertical-align:middle"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
           <p>
             Stereotypical frames in online job ads mirror stereotypes of social groups dominant in said occupational domain.
           </p>
         </a>
-        <a class="chapter-card chapter-link" href="/game-ch3.html" target="_blank" rel="noopener">
+        <a class="chapter-card chapter-link" href="/game-ch3.html" target="_blank" rel="noopener noreferrer" aria-label="Play Chapter 3: Sourcing Phase – Platform Delivery (opens in new tab)">
           <div class="chapter-num">Ch. 3</div>
-          <h3>Sourcing Phase: Platform Delivery</h3>
+          <h3>Sourcing Phase: Platform Delivery<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:4px;vertical-align:middle"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
           <p>
             Online platforms deliver job ads along stereotypical lines, but country-level individualistic and egalitarian norms alter delivery patterns.
           </p>
         </a>
-        <a class="chapter-card chapter-link" href="/game-ch4.html" target="_blank" rel="noopener">
+        <a class="chapter-card chapter-link" href="/game-ch4.html" target="_blank" rel="noopener noreferrer" aria-label="Play Chapter 4: Selection Phase – AI Recommendations (opens in new tab)">
           <div class="chapter-num">Ch. 4</div>
-          <h3>Selection Phase: AI Recommendations</h3>
+          <h3>Selection Phase: AI Recommendations<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-left:4px;vertical-align:middle"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></h3>
           <p>
             Candidate selection is not fully dictated by AI recommendations, but these do influence more subtle candidate fit assessments.
           </p>

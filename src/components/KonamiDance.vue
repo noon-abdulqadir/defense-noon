@@ -1,6 +1,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const imgErrors = ref({})
+function onImgError(i) {
+  imgErrors.value[i] = true
+}
+
 const active = ref(false)
 const currentVerse = ref(-1) // -1 = intro, 0-6 = verses, 7 = chorus, 8 = outro
 const showChorus = ref(false)
@@ -13,6 +18,7 @@ let timers = []
 const cast = [
   {
     name: 'Noon',
+    initial: 'N',
     photo: 'https://www.noon-abdulqadir.com/authors/admin/avatar_hu_e880ef29dc9f459.jpg',
     color: '#C5E84C',
     verse: '♪ Half a million job ads and what did I find?\n"Energetic" means young, "mature" means declined! ♪',
@@ -20,6 +26,7 @@ const cast = [
   },
   {
     name: 'Fabio',
+    initial: 'FV',
     photo: 'https://algosoc.org/uploads/_card/fabio-votta-1.jpg',
     color: '#1565C0',
     verse: '♪ They targeted your feed with your deepest fears —\nI scraped two million ads, took me several years! ♪',
@@ -27,6 +34,7 @@ const cast = [
   },
   {
     name: 'Delaney',
+    initial: 'DP',
     photo: 'https://hotpolitics.eu/wp-content/uploads/2025/12/Delaney_Peterson_2025-scaled-center-top-500x500.jpg',
     color: '#3E8EDE',
     verse: '♪ Your feelings are my variables, your rage my R² —\nPopulists sell belonging, returns never declared! ♪',
@@ -34,6 +42,7 @@ const cast = [
   },
   {
     name: 'Roeland',
+    initial: 'RD',
     photo: 'https://www.uva.nl/binaries/_ht_1747924741618/content/documents/personalpages/d/u/r.dubel/r.dubel',
     color: '#7CB9E8',
     verse: '♪ Do you trust the news? My data says you don\'t —\nI\'ll show you transparency, change your mind? I won\'t! ♪',
@@ -41,6 +50,7 @@ const cast = [
   },
   {
     name: 'Chiara',
+    initial: 'CV',
     photo: 'https://cdn.bsky.app/img/avatar/plain/did:plc:squv6a7sg6vheny4xnanktgv/bafkreichklk5pv7lb6yll3r7vvtbltld6en52ur3v6huyyct3btyvxnrf4@jpeg',
     color: '#B8D8F0',
     verse: '♪ Parliament\'s a circus, insults are my data —\nCivility is dying, I\'ll write the autopsy later! ♪',
@@ -48,6 +58,7 @@ const cast = [
   },
   {
     name: 'Ernesto',
+    initial: 'EW',
     photo: 'https://www.ernesto-deleon.com/authors/admin/avatar_hu614f9917ce8b72d4443466d9e6bcba9e_221201_270x270_fill_q75_lanczos_center.jpg',
     color: '#C5E84C',
     verse: '♪ Your filter bubble\'s cozy but the truth is far away —\nI mapped the information, it gets lost along the way! ♪',
@@ -55,7 +66,8 @@ const cast = [
   },
   {
     name: 'Jin',
-    photo: 'https://media.licdn.com/dms/image/v2/D4E03AQHTIO8T-WxgDQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1696669598795?e=2147483647&v=beta&t=qFivoYs98Ajqy1Sj1oBSFEdkJ6Koq3V169iQaS99mgs',
+    initial: 'JW',
+    photo: '/defense/jin-wan.jpg',
     color: '#3E8EDE',
     verse: '♪ The algorithm chose this song for your "For You" page —\nWho gets to feel empowered? Let me set the stage! ♪',
     dance: 'dance-bounce',
@@ -167,7 +179,13 @@ onUnmounted(() => {
               </div>
             </transition>
             <div class="dancer-avatar">
-              <img :src="person.photo" :alt="person.name" />
+              <img
+                v-if="!imgErrors[i]"
+                :src="person.photo"
+                :alt="person.name"
+                @error="onImgError(i)"
+              />
+              <div v-else class="dancer-avatar-fallback">{{ person.initial }}</div>
             </div>
             <span class="dancer-name">{{ person.name }}</span>
             <div class="spotlight" />
@@ -284,6 +302,19 @@ onUnmounted(() => {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.dancer-avatar-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color);
+  color: rgba(0, 0, 0, 0.6);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .dancer-name {

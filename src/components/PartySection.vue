@@ -78,31 +78,6 @@ onMounted(() => {
           <p class="tba-text">Details to be announced</p>
         </div>
 
-        <!-- ORIGINAL ADDRESS/MAP — uncomment to restore:
-        <div class="party-address">
-          <p>Nieuwe Doelenstraat 20, 1012 CP Amsterdam</p>
-          <div class="party-map-container">
-            <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Cafe+de+Jaren,Nieuwe+Doelenstraat+20,Amsterdam&zoom=16"
-              width="100%"
-              height="100%"
-              style="border:0"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            />
-          </div>
-          <a
-            href="https://maps.google.com/?q=Cafe+de+Jaren+Amsterdam"
-            target="_blank"
-            rel="noopener"
-            class="party-map-link"
-          >
-            Get Directions
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
-        </div>
-        -->
       </div>
 
     </div>

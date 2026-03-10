@@ -165,6 +165,12 @@ const faces = [
   ]},
 ]
 
+const noonImgError = ref(false)
+const faceImgErrors = ref({})
+function onFaceImgError(i) {
+  faceImgErrors.value[i] = true
+}
+
 const hoveredFace = ref(-1)
 const faceQuoteIdx = ref({})
 const noonHovered = ref(false)
@@ -460,10 +466,13 @@ function downloadCalendar() {
             @mouseleave="onNoonLeave"
           >
             <img
+              v-if="!noonImgError"
               src="https://www.noon-abdulqadir.com/authors/admin/avatar_hu_e880ef29dc9f459.jpg"
               alt="Noon M.F. Abdulqadir"
               class="author-photo"
+              @error="noonImgError = true"
             />
+            <div v-else class="author-photo-fallback">N</div>
           </div>
           <transition name="bubble">
             <div v-if="noonHovered" class="hero-speech-bubble noon-bubble">
@@ -480,7 +489,15 @@ function downloadCalendar() {
               @mouseenter="onFaceHover(i)"
               @mouseleave="onFaceLeave"
             >
-              <img :src="face.photo" :alt="face.name" class="face-img" draggable="false" />
+              <img
+                v-if="!faceImgErrors[i]"
+                :src="face.photo"
+                :alt="face.name"
+                class="face-img"
+                draggable="false"
+                @error="onFaceImgError(i)"
+              />
+              <div v-else class="face-img face-img-fallback">{{ face.name.charAt(0) }}</div>
               <transition name="bubble">
                 <div v-if="hoveredFace === i" class="hero-speech-bubble face-bubble">
                   {{ face.quotes[faceQuoteIdx[i] ?? 0] }}
@@ -634,6 +651,19 @@ function downloadCalendar() {
   display: block;
 }
 
+.author-photo-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue-light);
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
 .orbit-track {
   position: absolute;
   top: 50%;
@@ -721,6 +751,18 @@ function downloadCalendar() {
 
 .orbit-track.revealed .face-img {
   opacity: 1;
+}
+
+.face-img-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue-light);
+  color: var(--white);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
 }
 
 .orbit-track.revealed .face-slot:nth-child(1) .face-img { transition-delay: 0.5s; }
