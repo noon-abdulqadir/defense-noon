@@ -1,5 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+
+const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY
+const mapSrc = computed(() =>
+  mapsApiKey
+    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Agnietenkapel,Oudezijds+Voorburgwal+229,Amsterdam&zoom=16`
+    : null
+)
 
 const visible = ref(false)
 
@@ -58,7 +65,8 @@ onMounted(() => {
         <div class="venue-map">
           <div class="map-container">
             <iframe
-              src="https://www.google.com/maps/embed/v1/place?key=MAPS_API_KEY_PLACEHOLDER&q=Agnietenkapel,Oudezijds+Voorburgwal+229,Amsterdam&zoom=16"
+              v-if="mapSrc"
+              :src="mapSrc"
               width="100%"
               height="100%"
               style="border:0"
@@ -66,6 +74,10 @@ onMounted(() => {
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             />
+            <div v-else class="map-fallback">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Oudezijds Voorburgwal 229, Amsterdam</span>
+            </div>
           </div>
           <a
             href="https://maps.google.com/?q=Agnietenkapel+Oudezijds+Voorburgwal+229+Amsterdam"
@@ -213,6 +225,18 @@ h2 {
 
 .map-link:hover {
   color: var(--navy);
+}
+
+.map-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--gray-400);
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {

@@ -27,6 +27,11 @@ result.json
 # PDFs and large files
 *.pdf
 
+# Environment variables
+.envrc
+.env
+.env.local
+
 # Claude Code config
 .claude/
 
