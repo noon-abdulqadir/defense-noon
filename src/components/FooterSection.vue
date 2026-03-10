@@ -17,7 +17,7 @@ const imgError = ref(false)
         <div class="photo-avatar-wrap">
           <img
             v-if="!imgError"
-            src="https://media.licdn.com/dms/image/v2/D4E03AQHTIO8T-WxgDQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1696669598795?e=2147483647&v=beta&t=qFivoYs98Ajqy1Sj1oBSFEdkJ6Koq3V169iQaS99mgs"
+            src="/defense/jin-wan.jpg"
             alt="Jin Wan"
             class="photo-avatar-img"
             @error="imgError = true"
