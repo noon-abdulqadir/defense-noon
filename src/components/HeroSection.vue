@@ -141,7 +141,7 @@ const faces = [
     'You and your neighbor see different internets.',
     'I study what you don\'t see. And you don\'t see a lot.',
   ]},
-  { name: 'Jin', photo: 'https://media.licdn.com/dms/image/v2/D4E03AQHTIO8T-WxgDQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1696669598795?e=2147483647&v=beta&t=qFivoYs98Ajqy1Sj1oBSFEdkJ6Koq3V169iQaS99mgs', dot: '#3E8EDE', quotes: [
+  { name: 'Jin', photo: 'https://algosoc.org/uploads/_card/JinWan.jpeg', dot: '#3E8EDE', quotes: [
     'The algorithm decides if you care about politics.',
     'Your recommender system is gaslighting you.',
     'Political efficacy? The algorithm ate it.',
