@@ -460,7 +460,7 @@ function downloadCalendar() {
         Content and Consequences of Gender and Age Stereotypes<br>in Job Advertisements
       </p>
       <div class="hero-author">
-        <div class="orbit-system">
+        <div :class="['orbit-system', { 'faces-revealed': revealFaces }]">
           <div
             class="author-photo-wrap"
             :class="{ 'faces-active': revealFaces }"
@@ -621,8 +621,13 @@ function downloadCalendar() {
 .orbit-system {
   position: relative;
   width: 220px;
-  height: 220px;
+  height: 130px;
   margin-bottom: 1rem;
+  transition: height 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.orbit-system.faces-revealed {
+  height: 220px;
 }
 
 .author-photo-wrap {
