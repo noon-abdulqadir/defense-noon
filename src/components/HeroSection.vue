@@ -620,8 +620,8 @@ function downloadCalendar() {
 /* === Orbit System === */
 .orbit-system {
   position: relative;
-  width: 120px;
-  height: 120px;
+  width: 220px;
+  height: 220px;
   margin-bottom: 1rem;
 }
 
@@ -633,7 +633,10 @@ function downloadCalendar() {
   box-shadow: 0 8px 30px rgba(10, 36, 99, 0.12);
   border: 4px solid var(--white);
   transition: all 2s ease;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
 }
 
@@ -642,7 +645,7 @@ function downloadCalendar() {
 }
 
 .author-photo-wrap:hover {
-  transform: scale(1.05);
+  transform: translate(-50%, -50%) scale(1.05);
   box-shadow: 0 12px 40px rgba(10, 36, 99, 0.18);
 }
 
