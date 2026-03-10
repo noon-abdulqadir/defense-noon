@@ -604,7 +604,7 @@ function downloadCalendar() {
   color: var(--blue-mid);
   font-weight: 400;
   max-width: 600px;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 2rem;
   line-height: 1.5;
   font-style: italic;
   font-family: 'Playfair Display', serif;
@@ -895,14 +895,17 @@ function downloadCalendar() {
 
 .hero-buttons {
   display: grid;
-  grid-template-columns: repeat(2, auto);
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   gap: 0.6rem;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 .hero-cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.8rem 1.25rem;
   border-radius: 50px;
@@ -915,6 +918,7 @@ function downloadCalendar() {
   font-family: inherit;
   text-decoration: none;
   white-space: nowrap;
+  width: 100%;
 }
 
 .hero-cta.rsvp {
@@ -1003,13 +1007,6 @@ function downloadCalendar() {
 
   .hero-buttons {
     grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .hero-cta {
-    width: 100%;
-    max-width: 250px;
-    justify-content: center;
   }
 
   .orbit-track.revealed .face-slot {
