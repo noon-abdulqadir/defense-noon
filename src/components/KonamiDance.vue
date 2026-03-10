@@ -67,7 +67,7 @@ const cast = [
   {
     name: 'Jin',
     initial: 'JW',
-    photo: '/defense/jin-wan.jpg',
+    photo: `${import.meta.env.BASE_URL}jin-wan.jpg`,
     color: '#3E8EDE',
     verse: '♪ The algorithm chose this song for your "For You" page —\nWho gets to feel empowered? Let me set the stage! ♪',
     dance: 'dance-bounce',

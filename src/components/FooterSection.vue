@@ -17,7 +17,7 @@ const imgError = ref(false)
         <div class="photo-avatar-wrap">
           <img
             v-if="!imgError"
-            src="/defense/jin-wan.jpg"
+            :src="!imgError ? `${import.meta.env.BASE_URL}jin-wan.jpg` : ''"
             alt="Jin Wan"
             class="photo-avatar-img"
             @error="imgError = true"

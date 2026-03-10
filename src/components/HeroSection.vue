@@ -141,7 +141,7 @@ const faces = [
     'You and your neighbor see different internets.',
     'I study what you don\'t see. And you don\'t see a lot.',
   ]},
-  { name: 'Jin', photo: '/defense/jin-wan.jpg', dot: '#3E8EDE', quotes: [
+  { name: 'Jin', photo: `${import.meta.env.BASE_URL}jin-wan.jpg`, dot: '#3E8EDE', quotes: [
     'The algorithm decides if you care about politics.',
     'Your recommender system is gaslighting you.',
     'Political efficacy? The algorithm ate it.',
