@@ -489,7 +489,6 @@ function downloadCalendar() {
             </div>
           </div>
         </div>
-        <span class="by">by</span>
         <span class="name">Noon M.F. Abdulqadir</span>
       </div>
       <div class="hero-meta">
