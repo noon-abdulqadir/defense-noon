@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 const imgError = ref(false)
+const jinWanSrc = import.meta.env.BASE_URL + 'jin-wan.jpg'
 </script>
 
 <template>
@@ -17,7 +18,7 @@ const imgError = ref(false)
         <div class="photo-avatar-wrap">
           <img
             v-if="!imgError"
-            :src="!imgError ? `${import.meta.env.BASE_URL}jin-wan.jpg` : ''"
+            :src="jinWanSrc"
             alt="Jin Wan"
             class="photo-avatar-img"
             @error="imgError = true"

@@ -1,6 +1,8 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
+const jinWanSrc = import.meta.env.BASE_URL + 'jin-wan.jpg'
+
 const imgErrors = ref({})
 function onImgError(i) {
   imgErrors.value[i] = true
@@ -67,7 +69,7 @@ const cast = [
   {
     name: 'Jin',
     initial: 'JW',
-    photo: `${import.meta.env.BASE_URL}jin-wan.jpg`,
+    photo: jinWanSrc,
     color: '#3E8EDE',
     verse: '♪ The algorithm chose this song for your "For You" page —\nWho gets to feel empowered? Let me set the stage! ♪',
     dance: 'dance-bounce',
