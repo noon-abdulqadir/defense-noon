@@ -4,7 +4,7 @@ import { ref, onMounted, computed } from 'vue'
 const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY
 const mapSrc = computed(() =>
   mapsApiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Amstelhaven,Amsteldijk+34,Amsterdam&zoom=16`
+    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Agnietenkapel,Oudezijds+Voorburgwal+229,Amsterdam&zoom=16`
     : null
 )
 
@@ -26,8 +26,8 @@ onMounted(() => {
   <section id="venue" :class="['venue', { visible }]">
     <div class="venue-inner">
       <div class="section-badge">Venue</div>
-      <h2>Amstelhaven</h2>
-      <p class="venue-subtitle">A scenic waterfront venue on the banks of the Amstel in Amsterdam</p>
+      <h2>Agnietenkapel</h2>
+      <p class="venue-subtitle">The historic chapel of the University of Amsterdam in the heart of the city</p>
 
       <div class="venue-grid">
         <div class="venue-info">
@@ -37,7 +37,7 @@ onMounted(() => {
             </div>
             <div>
               <h3>Address</h3>
-              <p>Amsteldijk 34<br>1074 HT Amsterdam</p>
+              <p>Oudezijds Voorburgwal 229<br>1012 EZ Amsterdam</p>
             </div>
           </div>
 
@@ -76,11 +76,11 @@ onMounted(() => {
             />
             <div v-else class="map-fallback">
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Amsteldijk 34, Amsterdam</span>
+              <span>Oudezijds Voorburgwal 229, Amsterdam</span>
             </div>
           </div>
           <a
-            href="https://maps.google.com/?q=Amstelhaven+Amsteldijk+34+Amsterdam"
+            href="https://maps.google.com/?q=Agnietenkapel+Oudezijds+Voorburgwal+229+Amsterdam"
             target="_blank"
             rel="noopener"
             class="map-link"
@@ -207,7 +207,7 @@ h2 {
 
 .map-container {
   width: 100%;
-  height: 280px;
+  height: 240px;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--gray-200);

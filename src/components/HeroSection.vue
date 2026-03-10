@@ -425,14 +425,14 @@ function downloadCalendar() {
     'DTEND:20260409T100000Z',
     'SUMMARY:Noon\'s Doctoral Defense - Hiring in the Digital Society',
     'DESCRIPTION:Public defense of the dissertation "Hiring in the Digital Society" by Noon M.F. Abdulqadir',
-    'LOCATION:Amstelhaven\\, Amsteldijk 34\\, 1074 HT Amsterdam',
+    'LOCATION:Agnietenkapel\\, Oudezijds Voorburgwal 229\\, 1012 EZ Amsterdam',
     'END:VEVENT',
     'BEGIN:VEVENT',
     'DTSTART:20260409T163000Z',
     'DTEND:20260409T210000Z',
-    'SUMMARY:Noon\'s Defense Party at Cafe de Jaren',
+    'SUMMARY:Noon\'s Defense Party at Amstelhaven',
     'DESCRIPTION:Celebration party for Dr. Noon M.F. Abdulqadir',
-    'LOCATION:Cafe de Jaren\\, Nieuwe Doelenstraat 20\\, 1012 CP Amsterdam',
+    'LOCATION:Amstelhaven\\, Amsteldijk 34\\, 1074 HT Amsterdam',
     'END:VEVENT',
     'END:VCALENDAR',
   ].join('\r\n')
@@ -521,7 +521,7 @@ function downloadCalendar() {
         </div>
         <div class="meta-item">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>Amstelhaven, Amsterdam</span>
+          <span>Agnietenkapel, Amsterdam</span>
         </div>
       </div>
       <div class="hero-buttons">

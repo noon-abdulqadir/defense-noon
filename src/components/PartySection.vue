@@ -4,7 +4,7 @@ import { ref, onMounted, computed } from 'vue'
 const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY
 const partyMapSrc = computed(() =>
   mapsApiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Cafe+de+Jaren,Nieuwe+Doelenstraat+20,Amsterdam&zoom=16`
+    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Amstelhaven,Amsteldijk+34,Amsterdam&zoom=16`
     : null
 )
 
@@ -76,13 +76,13 @@ onMounted(() => {
             </div>
             <div>
               <span class="info-label">Location</span>
-              <span class="info-value">Cafe de Jaren</span>
+              <span class="info-value">Amstelhaven</span>
             </div>
           </div>
         </div>
 
         <div class="party-address">
-          <p>Nieuwe Doelenstraat 20, 1012 CP Amsterdam</p>
+          <p>Amsteldijk 34, 1074 HT Amsterdam</p>
           <div v-if="partyMapSrc" class="party-map-container">
             <iframe
               :src="partyMapSrc"
@@ -95,7 +95,7 @@ onMounted(() => {
             />
           </div>
           <a
-            href="https://maps.google.com/?q=Cafe+de+Jaren+Nieuwe+Doelenstraat+20+Amsterdam"
+            href="https://maps.google.com/?q=Amstelhaven+Amsteldijk+34+Amsterdam"
             target="_blank"
             rel="noopener noreferrer"
             class="party-map-link"
@@ -253,7 +253,7 @@ h2 {
 
 .party-map-container {
   width: 100%;
-  height: 180px;
+  height: 240px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 0.75rem;
