@@ -163,11 +163,10 @@ const imgError = ref(false)
 }
 
 .konami-hint {
-  margin-top: 2rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  color: var(--gray-200);
-  opacity: 0.4;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: var(--gray-400);
   user-select: none;
 }
 </style>

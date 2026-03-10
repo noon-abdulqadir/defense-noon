@@ -24,7 +24,7 @@ function toggleGift() {
             <div class="gift-icon">📖</div>
             <h3>Friendbook</h3>
             <p>We are putting together a memory book for Noon! If you have a favourite photo, memory, or message you'd like to share, please fill out the link below before <strong>April 1st</strong>. We will compile everything into a keepsake book and present it to her at the defense.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdD2SQTYznK3IyIUIsIXhkQ25noSoVIoUDGU2E-HEeOU0OMjg/viewform?usp=send_form" class="gift-link" target="_blank" rel="noopener">
+            <a href="https://mijnvriendenboekje.nl/nw/index.php?r=participant%2Finvitation-link&bookId=83760&token=FPqJUrOxpvhXyYd4EoHuYtNYli-rm_24XwFJkSmJSkIy" class="gift-link" target="_blank" rel="noopener">
               Fill out the Friendbook
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>

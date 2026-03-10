@@ -507,7 +507,7 @@ function downloadCalendar() {
         </div>
       </div>
       <div class="hero-buttons">
-        <a href="https://forms.gle/PLACEHOLDER" target="_blank" rel="noopener" class="hero-cta rsvp">
+        <a href="https://forms.gle/55D3ma1nGCNHivS88" target="_blank" rel="noopener" class="hero-cta rsvp">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           RSVP Now
         </a>
