@@ -83,17 +83,24 @@ onMounted(() => {
 
         <div class="party-address">
           <p>Amsteldijk 34, 1074 HT Amsterdam</p>
-          <div v-if="partyMapSrc" class="party-map-container">
+          <a
+            v-if="partyMapSrc"
+            href="https://maps.google.com/?q=Amstelhaven+Amsteldijk+34+Amsterdam"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="party-map-container"
+            aria-label="Open Amstelhaven in Google Maps"
+          >
             <iframe
               :src="partyMapSrc"
               width="100%"
               height="100%"
-              style="border:0"
+              style="border:0;pointer-events:none"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
             />
-          </div>
+          </a>
           <a
             href="https://maps.google.com/?q=Amstelhaven+Amsteldijk+34+Amsterdam"
             target="_blank"
@@ -252,12 +259,14 @@ h2 {
 
 
 .party-map-container {
+  display: block;
   width: 100%;
   height: 240px;
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }
 
 .party-map-link {

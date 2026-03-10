@@ -63,13 +63,19 @@ onMounted(() => {
         </div>
 
         <div class="venue-map">
-          <div class="map-container">
+          <a
+            href="https://maps.google.com/?q=Agnietenkapel+Oudezijds+Voorburgwal+229+Amsterdam"
+            target="_blank"
+            rel="noopener"
+            class="map-container"
+            aria-label="Open Agnietenkapel in Google Maps"
+          >
             <iframe
               v-if="mapSrc"
               :src="mapSrc"
               width="100%"
               height="100%"
-              style="border:0"
+              style="border:0;pointer-events:none"
               allowfullscreen=""
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
@@ -78,7 +84,7 @@ onMounted(() => {
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>Oudezijds Voorburgwal 229, Amsterdam</span>
             </div>
-          </div>
+          </a>
           <a
             href="https://maps.google.com/?q=Agnietenkapel+Oudezijds+Voorburgwal+229+Amsterdam"
             target="_blank"
@@ -206,12 +212,14 @@ h2 {
 }
 
 .map-container {
+  display: block;
   width: 100%;
   height: 240px;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--gray-200);
   background: var(--gray-100);
+  cursor: pointer;
 }
 
 .map-link {
