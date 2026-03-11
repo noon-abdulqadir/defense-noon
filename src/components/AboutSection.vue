@@ -50,6 +50,9 @@ onMounted(() => {
           <p>
             Candidate selection is not fully dictated by AI recommendations, but these do influence more subtle candidate fit assessments.
           </p>
+          <p class="chapter-citation">
+            Noon, M. F. A., van der Meer, T., Kroon, A. C., &amp; Vliegenthart, R. (2026). Bias in AI-aided candidate selection: Investigating the influence of AI recommendations and gender stereotypical frames on candidate selection and hiring decision-making. <a href="https://osf.io/9es65/overview" target="_blank" rel="noopener" class="citation-doi" @click.stop>https://osf.io/9es65/overview</a>
+          </p>
         </a>
       </div>
 
