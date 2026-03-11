@@ -30,8 +30,8 @@ const phases = [
     key: 'social',
     label: 'Celebration',
     events: [
-      { time: '11:10', label: 'Borrel Downstairs (same building)' },
-      { time: '12:00', label: 'Borrel End' },
+      { time: '11:20', label: 'Borrel Downstairs (same building)' },
+      { time: '12:30', label: 'Borrel End' },
     ],
   },
   {
