@@ -34,7 +34,7 @@ onMounted(() => {
             Stereotypical frames in online job ads mirror stereotypes of social groups dominant in said occupational domain.
           </p>
           <p class="chapter-citation">
-            Noon, M. F. A., Kroon, A. C., Van Der Goot, M. J., Vliegenthart, R., &amp; Van Selm, M. (2024). Bias in candidate sourcing communication: Investigating stereotypical gender- and age-related frames in online job advertisements at the sectoral level. <em>Public Relations Review</em>, <em>50</em>(3), 102456. <a href="https://doi.org/10.1016/j.pubrev.2024.102456" target="_blank" rel="noopener" class="citation-doi" @click.stop>https://doi.org/10.1016/j.pubrev.2024.102456</a>
+            Noon, M. F. A., Kroon, A. C., Van Der Goot, M. J., Vliegenthart, R., &amp; Van Selm, M. (2024). Bias in candidate sourcing communication: Investigating stereotypical gender- and age-related frames in online job advertisements at the sectoral level. <em>Public Relations Review</em>, <em>50</em>(3), 102456. <a href="https://doi.org/10.1016/j.pubrev.2024.102456" target="_blank" rel="noopener" class="citation-doi" @click.stop>https://doi.org/10.1016/j.pubrev.2024.102456</a> · <a href="https://www.noon-abdulqadir.com/publication/bias-candidate-sourcing-communication/" target="_blank" rel="noopener" class="citation-doi" @click.stop>Author's website</a>
           </p>
         </a>
         <a class="chapter-card chapter-link" href="/game-ch3.html" target="_blank" rel="noopener noreferrer" aria-label="Play Chapter 3: Sourcing Phase – Platform Delivery (opens in new tab)">
