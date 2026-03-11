@@ -31,6 +31,17 @@ const jinWanSrc = import.meta.env.BASE_URL + 'jin-wan.jpg'
         </div>
       </div>
 
+      <div class="credits-row">
+        <div class="credit-item">
+          <span class="photo-label">Layout and design</span>
+          <span class="photo-name"><a href="https://www.persoonlijkproefschrift.nl" target="_blank" rel="noopener" class="credit-link">Henry Smaal</a></span>
+        </div>
+        <div class="credit-item">
+          <span class="photo-label">Printing</span>
+          <span class="photo-name"><a href="https://www.ridderprint.nl" target="_blank" rel="noopener" class="credit-link">Ridderprint</a></span>
+        </div>
+      </div>
+
       <div class="footer-divider" />
 
       <p class="footer-title">
@@ -133,6 +144,28 @@ const jinWanSrc = import.meta.env.BASE_URL + 'jin-wan.jpg'
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--navy);
+}
+
+.credits-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.credit-item {
+  text-align: left;
+}
+
+.credit-link {
+  color: var(--navy);
+  text-decoration: none;
+}
+
+.credit-link:hover {
+  text-decoration: underline;
+  color: var(--blue);
 }
 
 .footer-divider {
