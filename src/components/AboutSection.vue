@@ -43,6 +43,9 @@ onMounted(() => {
           <p>
             Online platforms deliver job ads along stereotypical lines, but country-level individualistic and egalitarian norms alter delivery patterns.
           </p>
+          <p class="chapter-citation">
+            Noon, M. F. A., Kroon, A. C., van der Goot, M. J., Vliegenthart, R., &amp; van Selm, M. (2026). Bias in automated job advertisement delivery: The effect of stereotypical gender and age framing across European countries.
+          </p>
         </a>
         <a class="chapter-card chapter-link" href="/game-ch4.html" target="_blank" rel="noopener noreferrer" aria-label="Play Chapter 4: Selection Phase – AI Recommendations (opens in new tab)">
           <div class="chapter-num">Ch. 4</div>
