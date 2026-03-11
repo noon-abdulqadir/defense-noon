@@ -33,6 +33,9 @@ onMounted(() => {
           <p>
             Stereotypical frames in online job ads mirror stereotypes of social groups dominant in said occupational domain.
           </p>
+          <p class="chapter-citation">
+            Noon, M. F. A., Kroon, A. C., Van Der Goot, M. J., Vliegenthart, R., &amp; Van Selm, M. (2024). Bias in candidate sourcing communication: Investigating stereotypical gender- and age-related frames in online job advertisements at the sectoral level. <em>Public Relations Review</em>, <em>50</em>(3), 102456. <a href="https://doi.org/10.1016/j.pubrev.2024.102456" target="_blank" rel="noopener" class="citation-doi" @click.stop>https://doi.org/10.1016/j.pubrev.2024.102456</a>
+          </p>
         </a>
         <a class="chapter-card chapter-link" href="/game-ch3.html" target="_blank" rel="noopener noreferrer" aria-label="Play Chapter 3: Sourcing Phase – Platform Delivery (opens in new tab)">
           <div class="chapter-num">Ch. 3</div>
@@ -204,6 +207,25 @@ h2 {
   color: var(--gray-600);
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.chapter-citation {
+  font-size: 0.75rem !important;
+  color: var(--gray-400) !important;
+  line-height: 1.5 !important;
+  margin-top: 1rem !important;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.citation-doi {
+  color: var(--blue);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.citation-doi:hover {
+  text-decoration: underline;
 }
 
 .about-conclusion {
