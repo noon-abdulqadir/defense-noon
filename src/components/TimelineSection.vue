@@ -20,7 +20,7 @@ const phases = [
     label: 'Defense Ceremony',
     note: 'Please arrive by 09:45: no entry after 10:00',
     events: [
-      { time: '10:00', label: 'Defense Begins', big: true },
+      { time: '10:00', label: 'Defense Begins', big: true, stream: 'https://hva-uva.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4584e5e2-48a9-4a46-b94b-b40500b68ca4' },
       { time: '10:10', label: 'End of Presentation' },
       { time: '10:15', label: 'Committee Q&A' },
       { time: '11:00', label: 'End of Defense', big: true },
@@ -73,6 +73,16 @@ const phases = [
               <span class="event-time">{{ event.time }}</span>
               <span class="event-dot" />
               <span class="event-label">{{ event.label }}</span>
+              <a
+                v-if="event.stream"
+                :href="event.stream"
+                target="_blank"
+                rel="noopener"
+                class="stream-badge"
+              >
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Live
+              </a>
             </div>
           </div>
         </div>
@@ -284,6 +294,31 @@ h2 {
 .phase.party .event.big .event-label {
   color: var(--navy);
   font-size: 1.1rem;
+}
+
+.stream-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: rgba(21, 101, 192, 0.08);
+  border: 1px solid rgba(21, 101, 192, 0.2);
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.stream-badge:hover {
+  background: var(--blue);
+  color: var(--white);
+  border-color: var(--blue);
 }
 
 @media (max-width: 600px) {

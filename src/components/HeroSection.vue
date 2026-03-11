@@ -541,6 +541,17 @@ function downloadCalendar() {
           Play the Hiring Game
         </a>
       </div>
+      <p class="hero-stream">
+        <a
+          href="https://hva-uva.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4584e5e2-48a9-4a46-b94b-b40500b68ca4"
+          target="_blank"
+          rel="noopener"
+          class="stream-link"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+          Can't attend in person? Watch the live stream
+        </a>
+      </p>
     </div>
   </section>
 </template>
@@ -995,6 +1006,25 @@ function downloadCalendar() {
 
 .hero-cta.game:hover svg {
   transform: scale(1.2);
+}
+
+.hero-stream {
+  margin-top: 1.25rem;
+}
+
+.stream-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--blue-mid);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.stream-link:hover {
+  color: var(--blue);
 }
 
 @media (max-width: 600px) {

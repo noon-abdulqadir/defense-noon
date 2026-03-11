@@ -94,6 +94,15 @@ onMounted(() => {
             Open in Google Maps
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           </a>
+          <a
+            href="https://hva-uva.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4584e5e2-48a9-4a46-b94b-b40500b68ca4"
+            target="_blank"
+            rel="noopener"
+            class="map-link stream-link"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            Can't attend in person? Watch the live stream
+          </a>
         </div>
       </div>
     </div>
