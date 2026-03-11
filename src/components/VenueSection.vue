@@ -58,6 +58,15 @@ onMounted(() => {
             <div>
               <h3>Important</h3>
               <p>No entry after 10:00 AM<br>Doors close when defense begins</p>
+              <a
+                href="https://hva-uva.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4584e5e2-48a9-4a46-b94b-b40500b68ca4"
+                target="_blank"
+                rel="noopener"
+                class="card-stream-link"
+              >
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Can't attend in person? Watch the live stream
+              </a>
             </div>
           </div>
         </div>
@@ -229,6 +238,22 @@ h2 {
   border: 1px solid var(--gray-200);
   background: var(--gray-100);
   cursor: pointer;
+}
+
+.card-stream-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.card-stream-link:hover {
+  color: var(--navy);
 }
 
 .map-link {
