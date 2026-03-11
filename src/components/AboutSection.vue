@@ -150,6 +150,8 @@ h2 {
   border-radius: 16px;
   padding: 2rem;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .chapter-link {
@@ -219,7 +221,7 @@ h2 {
   font-size: 0.75rem !important;
   color: var(--gray-400) !important;
   line-height: 1.5 !important;
-  margin-top: 1rem !important;
+  margin-top: auto !important;
   padding-top: 0.75rem;
   border-top: 1px solid var(--gray-200);
 }
