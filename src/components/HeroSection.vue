@@ -430,9 +430,8 @@ function downloadCalendar() {
     'BEGIN:VEVENT',
     'DTSTART:20260409T163000Z',
     'DTEND:20260409T210000Z',
-    'SUMMARY:Noon\'s Defense Party at Amstelhaven',
-    'DESCRIPTION:Celebration party for Dr. Noon M.F. Abdulqadir',
-    'LOCATION:Amstelhaven\\, Amsteldijk 34\\, 1074 HT Amsterdam',
+    'SUMMARY:Noon\'s Defense Party (venue TBD)',
+    'DESCRIPTION:Celebration party for Dr. Noon M.F. Abdulqadir — venue to be announced',
     'END:VEVENT',
     'END:VCALENDAR',
   ].join('\r\n')

@@ -1,12 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-
-const mapsApiKey = import.meta.env.VITE_MAPS_API_KEY
-const partyMapSrc = computed(() =>
-  mapsApiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Amstelhaven,Amsteldijk+34,Amsterdam&zoom=16`
-    : null
-)
+import { ref, onMounted } from 'vue'
 
 const visible = ref(false)
 
@@ -76,40 +69,13 @@ onMounted(() => {
             </div>
             <div>
               <span class="info-label">Location</span>
-              <span class="info-value">Amstelhaven</span>
+              <span class="info-value">TBD</span>
             </div>
           </div>
         </div>
 
         <div class="party-address">
-          <p>Amsteldijk 34, 1074 HT Amsterdam</p>
-          <a
-            v-if="partyMapSrc"
-            href="https://maps.google.com/?q=Amstelhaven+Amsteldijk+34+Amsterdam"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="party-map-container"
-            aria-label="Open Amstelhaven in Google Maps"
-          >
-            <iframe
-              :src="partyMapSrc"
-              width="100%"
-              height="100%"
-              style="border:0;pointer-events:none"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            />
-          </a>
-          <a
-            href="https://maps.google.com/?q=Amstelhaven+Amsteldijk+34+Amsterdam"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="party-map-link"
-          >
-            Open in Google Maps
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          </a>
+          <p class="party-tbd-note">Venue to be announced — check back soon!</p>
         </div>
 
       </div>
