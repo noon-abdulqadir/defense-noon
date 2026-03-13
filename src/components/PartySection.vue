@@ -69,13 +69,35 @@ onMounted(() => {
             </div>
             <div>
               <span class="info-label">Location</span>
-              <span class="info-value">TBD</span>
+              <span class="info-value">Café de Jeugd</span>
             </div>
           </div>
         </div>
 
         <div class="party-address">
-          <p class="party-tbd-note">Venue to be announced — check back soon!</p>
+          <img
+            src="https://cafedejeugd.yourhotelwebsite.com/upload/heading/home-2000x1100_9.jpg"
+            alt="Café de Jeugd Amsterdam"
+            class="party-venue-photo"
+          />
+          <iframe
+            class="party-map-container"
+            src="https://www.google.com/maps?q=Linnaeusstraat+37A,+1093+EG+Amsterdam&output=embed"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Café de Jeugd on Google Maps"
+          />
+          <p class="party-address-text">Linnaeusstraat 37A, 1093 EG Amsterdam</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Café+de+Jeugd,+Linnaeusstraat+37A,+Amsterdam&query_place_id=ChIJhaw1Vv3jxUcRH5zdXh_CaJ4"
+            target="_blank"
+            rel="noopener"
+            class="party-map-link"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Open in Google Maps
+          </a>
         </div>
 
       </div>
@@ -223,6 +245,22 @@ h2 {
   margin-bottom: 0.75rem;
 }
 
+
+.party-venue-photo {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.party-address-text {
+  color: var(--blue-pale);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
 
 .party-map-container {
   display: block;

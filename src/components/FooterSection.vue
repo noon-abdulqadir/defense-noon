@@ -27,7 +27,7 @@ const jinWanSrc = import.meta.env.BASE_URL + 'jin-wan.jpg'
         </div>
         <div class="photo-info">
           <span class="photo-label">Photography by</span>
-          <span class="photo-name">Jin Wan</span>
+          <span class="photo-name"><a href="https://www.wanjin-photography.com/" target="_blank" rel="noopener" class="credit-link">Jin Wan</a></span>
         </div>
       </div>
 
