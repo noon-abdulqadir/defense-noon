@@ -72,6 +72,11 @@ onMounted(() => {
         </div>
 
         <div class="venue-map">
+          <img
+            src="https://reisfanaten.be/wp-content/uploads/2020/12/AgnietenkaEpel.jpg"
+            alt="Agnietenkapel interior, Amsterdam"
+            class="venue-photo"
+          />
           <a
             href="https://maps.google.com/?q=Agnietenkapel+Oudezijds+Voorburgwal+229+Amsterdam"
             target="_blank"
@@ -229,10 +234,19 @@ h2 {
   gap: 0.75rem;
 }
 
+.venue-photo {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--gray-200);
+}
+
 .map-container {
   display: block;
   width: 100%;
-  height: 240px;
+  height: 200px;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid var(--gray-200);

@@ -76,7 +76,7 @@ onMounted(() => {
 
         <div class="party-address">
           <img
-            src="https://cafedejeugd.yourhotelwebsite.com/upload/heading/home-2000x1100_9.jpg"
+            src="https://cafedejeugd.yourhotelwebsite.com/upload/heading/lellebel-1000x560_8.webp"
             alt="Café de Jeugd Amsterdam"
             class="party-venue-photo"
           />
