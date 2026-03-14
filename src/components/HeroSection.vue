@@ -759,13 +759,13 @@ function downloadCalendar() {
 .orbit-track.revealed .face-slot:nth-child(5) { transition-delay: 1.2s; }
 .orbit-track.revealed .face-slot:nth-child(6) { transition-delay: 1.5s; }
 
-/* Depth-of-field: some bubbles appear slightly out of focus */
-.orbit-track.revealed .face-slot:nth-child(2) { filter: blur(1.5px); }
-.orbit-track.revealed .face-slot:nth-child(4) { filter: blur(2.5px); }
-.orbit-track.revealed .face-slot:nth-child(6) { filter: blur(1px); }
+/* Depth-of-field: some dots appear slightly out of focus while in dot phase */
+.orbit-track.active .face-slot:nth-child(2) { filter: blur(1.5px); }
+.orbit-track.active .face-slot:nth-child(4) { filter: blur(2.5px); }
+.orbit-track.active .face-slot:nth-child(6) { filter: blur(1px); }
 
-/* Don't blur when dragging */
-.face-slot.face-dragging { filter: none !important; }
+/* Clear blur when faces are revealed */
+.orbit-track.revealed .face-slot { filter: none; transition: filter 0.6s ease; }
 
 /* Face image: hidden as dot, revealed gradually */
 .face-img {
