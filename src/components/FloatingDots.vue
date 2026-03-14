@@ -86,7 +86,7 @@ function init() {
       wanderPhaseY: Math.random() * Math.PI * 2,
     })
 
-    const blur = Math.random() < 0.35 ? Math.random() * 3.5 + 0.8 : 0
+    const blur = Math.random() < 0.5 ? Math.random() * 18 + 6 : 0
     configs.push({ id: i, size, color, blur })
   }
 
