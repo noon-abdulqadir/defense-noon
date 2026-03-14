@@ -86,7 +86,8 @@ function init() {
       wanderPhaseY: Math.random() * Math.PI * 2,
     })
 
-    configs.push({ id: i, size, color })
+    const blur = Math.random() < 0.35 ? Math.random() * 3.5 + 0.8 : 0
+    configs.push({ id: i, size, color, blur })
   }
 
   dotsConfig.value = configs
@@ -291,6 +292,7 @@ onUnmounted(() => {
         width: dot.size + 'px',
         height: dot.size + 'px',
         backgroundColor: dot.color,
+        filter: dot.blur ? `blur(${dot.blur}px)` : undefined,
       }"
       @pointerdown="onPointerDown($event, i)"
     />
