@@ -69,7 +69,7 @@ onMounted(() => {
             </div>
             <div>
               <span class="info-label">Location</span>
-              <span class="info-value">Café de Jeugd</span>
+              <span class="info-value">Café de Jeugd (Lellebel, interior room)</span>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ onMounted(() => {
         <div class="party-address">
           <img
             src="https://cafedejeugd.yourhotelwebsite.com/upload/heading/lellebel-1000x560_8.webp"
-            alt="Café de Jeugd Amsterdam"
+            alt="Café de Jeugd Amsterdam — Lellebel, interior room"
             class="party-venue-photo"
           />
           <iframe
@@ -86,7 +86,7 @@ onMounted(() => {
             loading="lazy"
             allowfullscreen
             referrerpolicy="no-referrer-when-downgrade"
-            title="Café de Jeugd on Google Maps"
+            title="Café de Jeugd (Lellebel) on Google Maps"
           />
           <p class="party-address-text">Linnaeusstraat 37A, 1093 EG Amsterdam</p>
           <a

@@ -431,8 +431,8 @@ function downloadCalendar() {
     'DTSTART:20260409T163000Z',
     'DTEND:20260409T210000Z',
     'SUMMARY:Noon\'s Defense Party',
-    'LOCATION:Café de Jeugd\\, Linnaeusstraat 37A\\, 1093 EG Amsterdam',
-    'DESCRIPTION:Celebration party for Dr. Noon M.F. Abdulqadir at Café de Jeugd\\, Amsterdam',
+    'LOCATION:Café de Jeugd (Lellebel\\, interior room)\\, Linnaeusstraat 37A\\, 1093 EG Amsterdam',
+    'DESCRIPTION:Celebration party for Dr. Noon M.F. Abdulqadir at Café de Jeugd (Lellebel\\, interior room)\\, Amsterdam',
     'END:VEVENT',
     'END:VCALENDAR',
   ].join('\r\n')

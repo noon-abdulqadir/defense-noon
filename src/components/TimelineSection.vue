@@ -38,7 +38,7 @@ const phases = [
     key: 'party',
     label: 'Evening',
     events: [
-      { time: '18:30', label: 'Party — Café de Jeugd', big: true },
+      { time: '18:30', label: 'Party — Café de Jeugd (Lellebel, interior room)', big: true },
     ],
   },
 ]

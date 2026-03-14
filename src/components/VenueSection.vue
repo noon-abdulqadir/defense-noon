@@ -73,7 +73,7 @@ onMounted(() => {
 
         <div class="venue-map">
           <img
-            src="https://reisfanaten.be/wp-content/uploads/2020/12/AgnietenkaEpel.jpg"
+            src="https://www.fotograafpromotie.nl/wp-content/uploads/2020/03/fotograaf-promotie-Agnietenkapel-UvA-Amsterdam-11.jpg"
             alt="Agnietenkapel interior, Amsterdam"
             class="venue-photo"
           />
