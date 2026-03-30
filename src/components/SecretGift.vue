@@ -48,7 +48,7 @@ function toggleGift() {
             <p>If you would like to contribute to her travel fund and Share the Meal Sudan, you can use either option below. Please add <strong>"PhD Noon + your name"</strong> in the description.</p>
 
             <div class="pay-options">
-              <a href="https://tikkie.me/pay/6q1ff4a45kv0j1isoprk" class="pay-btn tikkie-btn" target="_blank" rel="noopener">
+              <a href="https://tikkie.me/pay/m2p48s65btj4skn7mp3c" class="pay-btn tikkie-btn" target="_blank" rel="noopener">
                 <img src="/tikkie-logo.png" alt="" class="pay-icon" />
                 <span class="pay-brand-name">Contribute via Tikkie</span>
               </a>
